@@ -15,7 +15,7 @@ function App() {
         buttonStyle="btn--primary--outline"
         buttonSize="btn--large"
       >
-        Buy Now
+        test
       </Button>
       <Button
         onClick={() => {
