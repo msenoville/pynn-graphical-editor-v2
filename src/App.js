@@ -67,7 +67,7 @@ function App(props) {
 			{/* </td> */}
 			{/* </React.Fragment> */}
      	
-      <Toolbar id="toolbar" graph={graph} parentCall={callToolbar}/>
+      {/* <Toolbar id="toolbar" graph={graph} parentCall={callToolbar}/> */}
       <MainCanvas id="canvas" setGraph={setGraph} />
 		</div>
 	);
