@@ -1,4 +1,4 @@
-import { mxGeometry, mxCell, mxPoint, mxUtils, mxCodec } from "mxgraph-js";
+import {  mxUtils, mxCodec } from "mxgraph-js";
 import html2canvas from 'html2canvas';
 import 'js-file-download';
 

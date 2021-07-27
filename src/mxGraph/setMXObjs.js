@@ -1,4 +1,4 @@
-import { mxUtils, mxEvent, mxCell, mxGeometry, mxDragSource } from "mxgraph-js";
+import { mxUtils, mxEvent } from "mxgraph-js";
 
 const setMXObjs = (graph, objLists) => {
 	var idx = 0;
