@@ -1,0 +1,19 @@
+.float_center {
+    float: right;
+    left: 0%; /* or right 50% */
+    text-align: left;
+    position: fixed;
+}
+.float_center > ul {
+    position: relative;
+    left: -0%;
+    list-style-type: none;
+}
+
+.MXObj {
+    overflow: hidden;
+    width: 3vw;
+    height: 3vw;
+    margin-left: 10px;
+    margin-right: 10px;
+}
