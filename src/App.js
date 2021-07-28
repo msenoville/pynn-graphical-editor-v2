@@ -14,6 +14,14 @@ import "./css/main.css";
 import "./css/images.css";
 import "./css/common.css";
 
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+
+
+
+
+
+
 function App(props) {
 	// mxGraph object
 	const [graph, setGraph] = useState(null);
@@ -64,13 +72,20 @@ function App(props) {
 			{/* <React.Fragment> */}
 			{/* <td>  */}
 		  		<ObjSelect id="objectSelector" graph={graph} parentCall={callObjSelect}/>
+				  
+				  
 			{/* </td> */}
 			{/* </React.Fragment> */}
      	
       {/* <Toolbar id="toolbar" graph={graph} parentCall={callToolbar}/> */}
       <MainCanvas id="canvas" setGraph={setGraph} />
+	  <Popup>
+    <div>Popup content here !!</div>
+  </Popup>
 		</div>
 	);
 }
+
+
 
 export default App;

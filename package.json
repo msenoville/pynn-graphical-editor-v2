@@ -12,7 +12,9 @@
     "mxgraph-js-dt": "1.0.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-native-popup-menu": "^0.15.11",
     "react-scripts": "4.0.3",
+    "reactjs-popup": "^2.0.5",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
