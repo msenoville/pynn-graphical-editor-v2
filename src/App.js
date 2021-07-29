@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 
-import { mxGraph, mxRubberband, mxShape, mxConnectionHandler, mxGraphModel, mxGeometry } from "mxgraph-js";
+import { mxGraph, mxRubberband, mxShape, mxConnectionHandler, mxGraphModel, mxGeometry,mxPopupMenu } from "mxgraph-js";
 
 import MainCanvas from "./mxGraph/MainCanvas";
 import ObjSelect from "./mxGraph/ObjSelect";
 import Toolbar from "./mxGraph/Toolbar";
+import CreateTaskNode from "./mxGraph/CreateTaskNode";
 
 import setStylesheet from "./mxGraph/setStylesheet";
 import setAnchors from "./mxGraph/setAnchors";
@@ -64,6 +65,36 @@ function App(props) {
 
       		//Settings toolbar
 			setCallToolbar("setToolbar");
+			
+			graph.popupMenuHandler.autoExpand = true;
+			graph.popupMenuHandler.factoryMethod = function(menu, cell, evt)
+				{
+					menu.addItem('Item 1', null, function()
+				    {
+						alert('Item 1');
+				    });
+					
+					menu.addItem('Item 2', null, function()
+				    {
+						alert('Item 2');
+				    });
+
+					menu.addSeparator();
+					
+					var submenu1 = menu.addItem('Submenu 1', null, null);
+					
+					menu.addItem('Subitem 1', null, function()
+				    {
+						alert('Subitem 1');
+				    }, submenu1);
+					menu.addItem('Subitem 1', null, function()
+				    {
+						alert('Subitem 2');
+				    }, submenu1);
+				};
+			
+
+			
 		}
 	}, [graph]);
 
@@ -79,12 +110,15 @@ function App(props) {
      	
       {/* <Toolbar id="toolbar" graph={graph} parentCall={callToolbar}/> */}
       <MainCanvas id="canvas" setGraph={setGraph} />
-	  <Popup>
-    <div>Popup content here !!</div>
-  </Popup>
 		</div>
 	);
 }
+
+
+
+
+
+
 
 
 
