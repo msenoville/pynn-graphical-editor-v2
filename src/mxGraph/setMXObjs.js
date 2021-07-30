@@ -1,4 +1,4 @@
-import { mxUtils, mxEvent, mxCell, mxGeometry, mxDragSource } from "mxgraph-js";
+import { mxUtils, mxEvent, mxCell, mxGeometry, mxDragSource,mxPopupMenu } from "mxgraph-js";
 
 const setMXObjs = (graph, objLists) => {
 	var idx = 0;
@@ -41,6 +41,36 @@ const setMXObjs = (graph, objLists) => {
 			if (cells != null && cells.length > 0) {
 				graph.setSelectionCells(cells);
 			}
+			var mxPopupMenuShowMenu = mxPopupMenu.prototype.showMenu;
+			graph.popupMenuHandler.factoryMethod = function(menu, cell, evt)
+			{
+				menu.addItem('Item 1', null, function()
+				{
+					alert('Item 1');
+				});
+				
+				menu.addItem('Item 2', null, function()
+				{
+					alert('Item 2');
+				});
+
+				menu.addSeparator();
+				
+				var submenu1 = menu.addItem('Submenu 1', null, null);
+				
+				menu.addItem('Subitem 1', null, function()
+				{
+					alert('Subitem 1');
+				}, submenu1);
+				menu.addItem('Subitem 1', null, function()
+				{
+					alert('Subitem 2');
+				}, submenu1);
+				mxPopupMenuShowMenu.apply(this, arguments);
+
+				this.div.style.overflowY = 'auto';
+				this.div.style.overflowX = 'hidden';
+				this.div.style.maxHeight = '160px';};
 		};
 
 		// Creates the element that is being for the actual preview.

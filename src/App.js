@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { mxGraph, mxRubberband, mxShape, mxConnectionHandler, mxGraphModel, mxGeometry,mxPopupMenu } from "mxgraph-js";
+import { mxGraph, mxRubberband, mxShape, mxConnectionHandler, mxGraphModel, mxGeometry,mxPopupMenu,mxEvent } from "mxgraph-js";
 
 import MainCanvas from "./mxGraph/MainCanvas";
 import ObjSelect from "./mxGraph/ObjSelect";
@@ -92,7 +92,7 @@ function App(props) {
 						alert('Subitem 2');
 				    }, submenu1);
 				};
-			
+
 
 			
 		}
@@ -111,7 +111,10 @@ function App(props) {
       {/* <Toolbar id="toolbar" graph={graph} parentCall={callToolbar}/> */}
       <MainCanvas id="canvas" setGraph={setGraph} />
 		</div>
+		
 	);
+
+
 }
 
 
