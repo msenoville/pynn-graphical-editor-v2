@@ -66,32 +66,7 @@ function App(props) {
       		//Settings toolbar
 			setCallToolbar("setToolbar");
 			
-			graph.popupMenuHandler.autoExpand = true;
-			graph.popupMenuHandler.factoryMethod = function(menu, cell, evt)
-				{
-					menu.addItem('Item 1', null, function()
-				    {
-						alert('Item 1');
-				    });
-					
-					menu.addItem('Item 2', null, function()
-				    {
-						alert('Item 2');
-				    });
 
-					menu.addSeparator();
-					
-					var submenu1 = menu.addItem('Submenu 1', null, null);
-					
-					menu.addItem('Subitem 1', null, function()
-				    {
-						alert('Subitem 1');
-				    }, submenu1);
-					menu.addItem('Subitem 1', null, function()
-				    {
-						alert('Subitem 2');
-				    }, submenu1);
-				};
 
 
 			
