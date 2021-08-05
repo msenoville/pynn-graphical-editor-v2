@@ -28,6 +28,7 @@ function App(props) {
 	const [graph, setGraph] = useState(null);
 	const [callObjSelect, setCallObjSelect] = useState(null);
 	const [callToolbar, setCallToolbar] = useState(null);
+	
 
 	//Called when the graph changes
 	useEffect(() => {
@@ -85,6 +86,13 @@ function App(props) {
      	
       {/* <Toolbar id="toolbar" graph={graph} parentCall={callToolbar}/> */}
       <MainCanvas id="canvas" setGraph={setGraph} />
+	  {this.state.createVisile && (
+          <CreateTaskNode
+            currentTask={this.state.currentTask}
+            visible={this.state.createVisile}
+            handleCancel={this.handleCancel}
+            handleConfirm={this.handleConfirm}
+          />)}
 		</div>
 		
 	);
