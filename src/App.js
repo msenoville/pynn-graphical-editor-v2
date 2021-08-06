@@ -28,7 +28,7 @@ function App(props) {
 	const [graph, setGraph] = useState(null);
 	const [callObjSelect, setCallObjSelect] = useState(null);
 	const [callToolbar, setCallToolbar] = useState(null);
-	var tempProps = JSON.parse(JSON.stringify(this.props));
+	
 	props.state = {
 		graph: {},
 		layout: {},
