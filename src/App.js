@@ -17,7 +17,7 @@ import "./css/common.css";
 
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-
+import CreateJob from './mxGraph/CreateJob.js';
 
 
 
@@ -28,6 +28,17 @@ function App(props) {
 	const [graph, setGraph] = useState(null);
 	const [callObjSelect, setCallObjSelect] = useState(null);
 	const [callToolbar, setCallToolbar] = useState(null);
+	var tempProps = JSON.parse(JSON.stringify(this.props));
+	props.state = {
+		graph: {},
+		layout: {},
+		json: "",
+		dragElt: null,
+		createVisile: false,
+		currentNode: null,
+		currentTask: ""
+	  };
+
 	
 
 	//Called when the graph changes
@@ -66,6 +77,27 @@ function App(props) {
 
       		//Settings toolbar
 			setCallToolbar("setToolbar");
+
+			let handleCancel = () => {
+				props.setState({ createVisile: false });
+				props.state.graph.removeCells([props.state.currentNode]);
+			  };
+			let  handleConfirm = fields => {
+				const { graph } = props.state;
+				const cell = graph.getSelectionCell();
+				props.applyHandler(graph, cell, "text", fields.taskName);
+				props.applyHandler(graph, cell, "desc", fields.taskDesc);
+				cell.setId(fields.id || 100);
+				props.setState({ createVisile: false });
+			  };
+			let  selectionChanged = (graph, value) => {
+				console.log("visible");
+				props.setState({
+				  createVisile: true,
+				  currentNode: graph.getSelectionCell(),
+				  currentTask: value
+				});
+			  };
 			
 
 
@@ -86,12 +118,12 @@ function App(props) {
      	
       {/* <Toolbar id="toolbar" graph={graph} parentCall={callToolbar}/> */}
       <MainCanvas id="canvas" setGraph={setGraph} />
-	  {this.state.createVisile && (
+	  {props.state.createVisile && (
           <CreateTaskNode
-            currentTask={this.state.currentTask}
-            visible={this.state.createVisile}
-            handleCancel={this.handleCancel}
-            handleConfirm={this.handleConfirm}
+            currentTask={props.state.currentTask}
+            visible={props.state.createVisile}
+            handleCancel={props.handleCancel}
+            handleConfirm={props.handleConfirm}
           />)}
 		</div>
 		
@@ -100,8 +132,8 @@ function App(props) {
 
 }
 
-
-
+// <CreateJob auth={props.auth} collab={currentCollab}  setCollab={setCurrentCollab} />
+//import CreateJob from './Queue/CreateJob.js';
 
 
 
