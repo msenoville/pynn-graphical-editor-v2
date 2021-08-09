@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from "react";
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	Link
+  } from "react-router-dom";
 
 import { mxGraph, mxRubberband, mxShape, mxConnectionHandler, mxGraphModel, mxGeometry,mxPopupMenu,mxEvent } from "mxgraph-js";
 
 import MainCanvas from "./mxGraph/MainCanvas";
 import ObjSelect from "./mxGraph/ObjSelect";
 import Toolbar from "./mxGraph/Toolbar";
-import CreateTaskNode from "./mxGraph/CreateTaskNode";
+import CreateJob from "./mxGraph/CreateJob";
 
 import setStylesheet from "./mxGraph/setStylesheet";
 import setAnchors from "./mxGraph/setAnchors";
@@ -17,7 +23,7 @@ import "./css/common.css";
 
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-
+import CreateJob from './mxGraph/CreateJob.js';
 
 
 
@@ -28,6 +34,25 @@ function App(props) {
 	const [graph, setGraph] = useState(null);
 	const [callObjSelect, setCallObjSelect] = useState(null);
 	const [callToolbar, setCallToolbar] = useState(null);
+	const [currentCollab, setCurrentCollab] = React.useState(null);
+	React.useEffect(() => {
+		let params = (new URL(document.location)).searchParams;
+		let requestedCollabId = params.get('clb-collab-id');
+		if (requestedCollabId) {
+		  setCurrentCollab(requestedCollabId);
+		}    console.log(`Requested ${requestedCollabId}`);
+	}, [currentCollab]);
+	
+	props.state = {
+		graph: {},
+		layout: {},
+		json: "",
+		dragElt: null,
+		createVisile: false,
+		currentNode: null,
+		currentTask: ""
+	  };
+
 	
 
 	//Called when the graph changes
@@ -66,6 +91,27 @@ function App(props) {
 
       		//Settings toolbar
 			setCallToolbar("setToolbar");
+
+			let handleCancel = () => {
+				props.setState({ createVisile: false });
+				props.state.graph.removeCells([props.state.currentNode]);
+			  };
+			let  handleConfirm = fields => {
+				const { graph } = props.state;
+				const cell = graph.getSelectionCell();
+				props.applyHandler(graph, cell, "text", fields.taskName);
+				props.applyHandler(graph, cell, "desc", fields.taskDesc);
+				cell.setId(fields.id || 100);
+				props.setState({ createVisile: false });
+			  };
+			let  selectionChanged = (graph, value) => {
+				console.log("visible");
+				props.setState({
+				  createVisile: true,
+				  currentNode: graph.getSelectionCell(),
+				  currentTask: value
+				});
+			  };
 			
 
 
@@ -75,6 +121,7 @@ function App(props) {
 	}, [graph]);
 
 	return (
+		<Router>
 		<div id="main">
 			{/* <React.Fragment> */}
 			{/* <td>  */}
@@ -86,22 +133,26 @@ function App(props) {
      	
       {/* <Toolbar id="toolbar" graph={graph} parentCall={callToolbar}/> */}
       <MainCanvas id="canvas" setGraph={setGraph} />
-	  {this.state.createVisile && (
+<<<<<<< HEAD
+		</div></Router>
+=======
+	  {props.state.createVisile && (
           <CreateTaskNode
-            currentTask={this.state.currentTask}
-            visible={this.state.createVisile}
-            handleCancel={this.handleCancel}
-            handleConfirm={this.handleConfirm}
+            currentTask={props.state.currentTask}
+            visible={props.state.createVisile}
+            handleCancel={props.handleCancel}
+            handleConfirm={props.handleConfirm}
           />)}
 		</div>
+>>>>>>> f4cbbbf40c18607d748c25732c74b83ed85889cc
 		
 	);
 
 
 }
 
-
-
+// <CreateJob auth={props.auth} collab={currentCollab}  setCollab={setCurrentCollab} />
+//import CreateJob from './Queue/CreateJob.js';
 
 
 

@@ -1,6 +1,8 @@
 import { mxUtils, mxEvent, mxCell, mxGeometry, mxDragSource,mxPopupMenu } from "mxgraph-js";
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+import ModalTest from "./ModalTest";
+
 
 const setMXObjs = (graph, objLists) => {
 	var idx = 0;
@@ -67,6 +69,10 @@ const setMXObjs = (graph, objLists) => {
 				menu.addItem('Subitem 1', null, function()
 				{
 					alert('Subitem 2');
+				}, submenu1);
+				menu.addItem('Test',null,function()
+				{
+					ModalTest();
 				}, submenu1);
 				mxPopupMenuShowMenu.apply(this, arguments);
 
