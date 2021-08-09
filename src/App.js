@@ -23,7 +23,7 @@ import "./css/common.css";
 
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-import CreateJob from './mxGraph/CreateJob.js';
+
 
 
 
@@ -35,34 +35,6 @@ function App(props) {
 	const [callObjSelect, setCallObjSelect] = useState(null);
 	const [callToolbar, setCallToolbar] = useState(null);
 	const [currentCollab, setCurrentCollab] = React.useState(null);
-	React.useEffect(() => {
-		let params = (new URL(document.location)).searchParams;
-		let requestedCollabId = params.get('clb-collab-id');
-		if (requestedCollabId) {
-		  setCurrentCollab(requestedCollabId);
-		}    console.log(`Requested ${requestedCollabId}`);
-	}, [currentCollab]);
-
-	props.state = {
-		graph: {},
-		layout: {},
-		json: "",
-		dragElt: null,
-		createVisile: false,
-		currentNode: null,
-		currentTask: ""
-	  };
-
-
-	props.state = {
-		graph: {},
-		layout: {},
-		json: "",
-		dragElt: null,
-		createVisile: false,
-		currentNode: null,
-		currentTask: ""
-	  };
 
 
 
@@ -103,26 +75,6 @@ function App(props) {
       		//Settings toolbar
 			setCallToolbar("setToolbar");
 
-			let handleCancel = () => {
-				props.setState({ createVisile: false });
-				props.state.graph.removeCells([props.state.currentNode]);
-			  };
-			let  handleConfirm = fields => {
-				const { graph } = props.state;
-				const cell = graph.getSelectionCell();
-				props.applyHandler(graph, cell, "text", fields.taskName);
-				props.applyHandler(graph, cell, "desc", fields.taskDesc);
-				cell.setId(fields.id || 100);
-				props.setState({ createVisile: false });
-			  };
-			let  selectionChanged = (graph, value) => {
-				console.log("visible");
-				props.setState({
-				  createVisile: true,
-				  currentNode: graph.getSelectionCell(),
-				  currentTask: value
-				});
-			  };
 
 
 
@@ -132,7 +84,6 @@ function App(props) {
 	}, [graph]);
 
 	return (
-		<Router>
 		<div id="main">
 			{/* <React.Fragment> */}
 			{/* <td>  */}
@@ -145,15 +96,13 @@ function App(props) {
       {/* <Toolbar id="toolbar" graph={graph} parentCall={callToolbar}/> */}
       <MainCanvas id="canvas" setGraph={setGraph} />
 		</div>
->>>>>>> f4cbbbf40c18607d748c25732c74b83ed85889cc
+
 
 	);
 
 
 }
 
-// <CreateJob auth={props.auth} collab={currentCollab}  setCollab={setCurrentCollab} />
-//import CreateJob from './Queue/CreateJob.js';
 
 
 
