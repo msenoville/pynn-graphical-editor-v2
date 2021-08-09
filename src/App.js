@@ -42,7 +42,7 @@ function App(props) {
 		  setCurrentCollab(requestedCollabId);
 		}    console.log(`Requested ${requestedCollabId}`);
 	}, [currentCollab]);
-	
+
 	props.state = {
 		graph: {},
 		layout: {},
@@ -53,7 +53,18 @@ function App(props) {
 		currentTask: ""
 	  };
 
-	
+
+	props.state = {
+		graph: {},
+		layout: {},
+		json: "",
+		dragElt: null,
+		createVisile: false,
+		currentNode: null,
+		currentTask: ""
+	  };
+
+
 
 	//Called when the graph changes
 	useEffect(() => {
@@ -112,11 +123,11 @@ function App(props) {
 				  currentTask: value
 				});
 			  };
-			
 
 
 
-			
+
+
 		}
 	}, [graph]);
 
@@ -126,26 +137,16 @@ function App(props) {
 			{/* <React.Fragment> */}
 			{/* <td>  */}
 		  		<ObjSelect id="objectSelector" graph={graph} parentCall={callObjSelect}/>
-				  
-				  
+
+
 			{/* </td> */}
 			{/* </React.Fragment> */}
-     	
+
       {/* <Toolbar id="toolbar" graph={graph} parentCall={callToolbar}/> */}
       <MainCanvas id="canvas" setGraph={setGraph} />
-<<<<<<< HEAD
-		</div></Router>
-=======
-	  {props.state.createVisile && (
-          <CreateTaskNode
-            currentTask={props.state.currentTask}
-            visible={props.state.createVisile}
-            handleCancel={props.handleCancel}
-            handleConfirm={props.handleConfirm}
-          />)}
 		</div>
 >>>>>>> f4cbbbf40c18607d748c25732c74b83ed85889cc
-		
+
 	);
 
 
