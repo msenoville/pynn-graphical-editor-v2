@@ -23,7 +23,7 @@ import "./css/common.css";
 
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-
+import ModalTest from "./mxGraph/ModalTest"
 
 
 
@@ -95,6 +95,7 @@ function App(props) {
 
       {/* <Toolbar id="toolbar" graph={graph} parentCall={callToolbar}/> */}
       <MainCanvas id="canvas" setGraph={setGraph} />
+	  <ModalTest/>
 		</div>
 
 

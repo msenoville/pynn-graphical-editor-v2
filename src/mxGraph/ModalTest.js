@@ -1,9 +1,10 @@
 import React from 'react';
 import Popup from 'reactjs-popup';
 
+
 export default () => (
   <Popup
-    trigger={true}
+    trigger={ref.current.open()}
     modal
     nested
   >
