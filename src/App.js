@@ -95,7 +95,7 @@ function App(props) {
 
       {/* <Toolbar id="toolbar" graph={graph} parentCall={callToolbar}/> */}
       <MainCanvas id="canvas" setGraph={setGraph} />
-	  <ModalTest/>
+	  
 		</div>
 
 
