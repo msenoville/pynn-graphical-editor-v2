@@ -24,6 +24,8 @@ import "./css/common.css";
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import ModalTest from "./mxGraph/ModalTest"
+import ControlledPopup from "./mxGraph/ControlledPopup";
+import setMXObjs from "./mxGraph/setMXObjs";
 
 
 
@@ -35,6 +37,7 @@ function App(props) {
 	const [callObjSelect, setCallObjSelect] = useState(null);
 	const [callToolbar, setCallToolbar] = useState(null);
 	const [currentCollab, setCurrentCollab] = React.useState(null);
+	const [open, setOpen] = useState(false);
 
 
 
@@ -96,6 +99,7 @@ function App(props) {
       {/* <Toolbar id="toolbar" graph={graph} parentCall={callToolbar}/> */}
       <MainCanvas id="canvas" setGraph={setGraph} />
 	  
+	  
 		</div>
 
 
@@ -103,7 +107,7 @@ function App(props) {
 
 
 }
-
+//<setMXObjs open={open} setOpen={setOpen}/>
 
 
 
