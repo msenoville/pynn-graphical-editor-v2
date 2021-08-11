@@ -50,7 +50,6 @@ function App(props) {
 			//Some functions of Overridden mxGraph
 			setDefault(graph, mxConnectionHandler);
 
-
 			//Set mxGraph Object to pull into graph
 			setCallObjSelect("setMXObjs");
 
@@ -67,7 +66,7 @@ function App(props) {
 			{/* </td> */}
 			{/* </React.Fragment> */}
      	
-      {/* <Toolbar id="toolbar" graph={graph} parentCall={callToolbar}/> */}
+      <Toolbar id="toolbar" graph={graph} parentCall={callToolbar}/>
       <MainCanvas id="canvas" setGraph={setGraph} />
 		</div>
 	);

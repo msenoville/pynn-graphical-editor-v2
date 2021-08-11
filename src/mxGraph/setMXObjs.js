@@ -20,6 +20,26 @@ const setMXObjs = (graph, objLists) => {
 			return null;
 		};
 
+		const createPopupMenu = function (graph, menu, cell, evt) {
+			if (cell) {
+			  if (cell.edge === true) {
+				menu.addItem("Delete connection", null, function() {
+				//   graph.removeCells([cell]);
+				//   mxEvent.consume(evt);
+				});
+			  } else {
+				menu.addItem("Edit child node", null, function() {
+				  // mxUtils.alert('Edit child node: ');
+				  // selectionChanged(graph)
+				});
+				menu.addItem("Delete child node", null, function() {
+				  graph.removeCells([cell]);
+				  mxEvent.consume(evt);
+				});
+			  }
+			}
+		};
+
 		const objectLists = document.getElementById(objLists);
 
 		var li = document.createElement("li");
@@ -41,6 +61,7 @@ const setMXObjs = (graph, objLists) => {
 			if (cells != null && cells.length > 0) {
 				graph.setSelectionCells(cells);
 			}
+			graph.popupMenuHandler.factoryMethod = createPopupMenu(graph, menu, cell, evt);
 		};
 
 		// Creates the element that is being for the actual preview.
@@ -48,11 +69,14 @@ const setMXObjs = (graph, objLists) => {
 		dragElt.style.border = "dashed black 1px";
 		dragElt.style.width = width + "px";
 		dragElt.style.height = height + "px";
-
 		var ds = mxUtils.makeDraggable(img, dropGraph, dropSuccessCb, dragElt, null, null, graph.autoscroll, true);
 		// Restores original drag icon while outside of graph
 		ds.createDragElement = mxDragSource.prototype.createDragElement;
+
 	}
+	// graph.popupMenuHandler.factoryMethod = function(menu, cell, evt) {
+	// 	return that.createPopupMenu(graph, menu, cell, evt);
+	//   };
 
 	setObj('rectangle', 120, 80, {
 		// Font

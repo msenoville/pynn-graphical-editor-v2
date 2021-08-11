@@ -30,7 +30,8 @@ const setToolbar = (graph, setBtns) => {
 
 	const SaveXml = function (xml) {
 		// file name
-		var filename = document.getElementById('filename').value;
+		// var filename = document.getElementById('filename').value;
+		var filename = '';
 		if (filename === '') {
 			filename = 'MXGraph';
 		}
@@ -60,7 +61,8 @@ const setToolbar = (graph, setBtns) => {
 	}
 
 	addButton("screenshoot", function () {
-		var filename = document.getElementById('filename').value;
+		// var filename = document.getElementById('filename').value;
+		var filename = '';
 		if (filename == '') {
 			filename = 'MXGraph';
 		}
