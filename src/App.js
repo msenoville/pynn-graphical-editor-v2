@@ -38,6 +38,7 @@ function App(props) {
 	const [callToolbar, setCallToolbar] = useState(null);
 	const [currentCollab, setCurrentCollab] = React.useState(null);
 	const [open, setOpen] = useState(false);
+	
 
 
 
@@ -99,6 +100,7 @@ function App(props) {
       {/* <Toolbar id="toolbar" graph={graph} parentCall={callToolbar}/> */}
       <MainCanvas id="canvas" setGraph={setGraph} />
 	  
+	 
 	  
 		</div>
 
@@ -107,8 +109,7 @@ function App(props) {
 
 
 }
-//<setMXObjs open={open} setOpen={setOpen}/>
-
+//<ControlledPopup open={open} setOpen={setOpen}/>
 
 
 

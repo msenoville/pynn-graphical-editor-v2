@@ -3,11 +3,10 @@ import Popup from 'reactjs-popup';
 //
 
 const ControlledPopup = () => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const closeModal = () => setOpen(false);
   return (
     <div>
-      {() => setOpen(o => !o)}
       <Popup open={open} closeOnDocumentClick onClose={closeModal}>
         <div className="modal">
           <a className="close" onClick={closeModal}>
@@ -22,5 +21,4 @@ const ControlledPopup = () => {
     </div>
   );
 };
-
 export default ControlledPopup
