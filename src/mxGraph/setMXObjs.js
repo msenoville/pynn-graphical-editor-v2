@@ -1,14 +1,17 @@
-import { mxUtils, mxEvent, mxCell, mxGeometry, mxDragSource,mxPopupMenu, mxHandle } from "mxgraph-js";
+import { mxUtils, mxEvent, mxCell, mxGeometry, mxDragSource, mxPopupMenu, mxHandle } from "mxgraph-js";
+import React, { useState } from 'react';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import ModalTest from "./ModalTest";
-import ControlledPopup from "./ControlledPopup"
+// import ControlledPopup from "./ControlledPopup"
+// import Popup from 'reactjs-popup';
 
 
-const setMXObjs = (graph, objLists) => {
+
+const SetMXObjs = (graph, objLists) => {
 	var idx = 0;
 
-
+	// const [openi, setOpeni] = useState(false);
 
 	const setObj = function (MXObjImgClass, width, height, value) {
 
@@ -75,9 +78,9 @@ const setMXObjs = (graph, objLists) => {
 				}, submenu1);
 				menu.addItem('Test',null,function()
 				{
-					ControlledPopup();
+					console.log('test');
 				}, submenu1);
-				mxPopupMenuShowMenu.apply(this, arguments);
+				// mxPopupMenuShowMenu.apply(this, arguments);
 
 				this.div.style.overflowY = 'auto';
 				this.div.style.overflowX = 'hidden';
@@ -109,4 +112,4 @@ const setMXObjs = (graph, objLists) => {
 	});
 
 }
-export default setMXObjs;
+export default SetMXObjs;

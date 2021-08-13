@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import setMXObjs from "./setMXObjs";
+import SetMXObjs from "./setMXObjs";
 import "../css/objselect.css"
 
 export default function Footer(props) {
@@ -9,7 +9,7 @@ export default function Footer(props) {
 	useEffect(() => {
 		if (props.parentCall !== null) {
 			if (props.parentCall.toLowerCase() === "setmxobjs") {
-				setMXObjs(props.graph, objLists);
+				SetMXObjs(props.graph, objLists);
 			}
 		}
 	}, [props.parentCall]);
