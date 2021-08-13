@@ -14,6 +14,8 @@ import "./css/main.css";
 import "./css/images.css";
 import "./css/common.css";
 
+import TextFieldSizes from "./webpages/TextFieldSizes"
+
 function App(props) {
 	// mxGraph object
 	const [graph, setGraph] = useState(null);
@@ -61,16 +63,12 @@ function App(props) {
 
 	return (
 		<div id="main">
-			{/* <React.Fragment> */}
-			{/* <td>  */}
-		  		<ObjSelect id="objectSelector" graph={graph} parentCall={callObjSelect}/>
-			{/* </td> */}
-			{/* </React.Fragment> */}
-     	
-      {/* <Toolbar id="toolbar" graph={graph} parentCall={callToolbar}/> */}
-      <MainCanvas id="canvas" setGraph={setGraph} />
+
+	  <TextFieldSizes />
 		</div>
 	);
 }
+
+
 
 export default App;
