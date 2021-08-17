@@ -11,6 +11,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
+import { FormatLineSpacing } from '@material-ui/icons';
 
 
 
@@ -18,12 +19,28 @@ import Checkbox from '@material-ui/core/Checkbox';
 const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
-      margin: theme.spacing(1),
+      margin: theme.spacing(3),
       width: 200,
     },
+  },  formControl: {
+    margin: theme.spacing(3),
+    minWidth: 120,
+    maxWidth: 300,
+  },
+  chips: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  chip: {
+    margin: 2,
+  },
+  noLabel: {
+    marginTop: theme.spacing(3),
   },
 }));
-const TITLE = 'My Page Title'
+
+
+
 
 export default function TextFieldSizes() {
   const classes = useStyles();
@@ -42,14 +59,16 @@ export default function TextFieldSizes() {
     setOpen(true);
   };
   const [state, setState] = React.useState({
-    gilad: true,
-    jason: false,
-    antoine: false,
+    spikes: true,
+    v: false,
+    
   });
+  const handleChange2 = (event) => {
+    setState({ ...state, [event.target.name]: event.target.checked });
+  };
 
-
-  const { gilad, jason, antoine } = state;
-  const error = [gilad, jason, antoine].filter((v) => v).length !== 2;
+  const { spikes, v } = state;
+  const error = [spikes, v].filter((v) => v).length !== 2;
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
@@ -70,7 +89,7 @@ export default function TextFieldSizes() {
       </div>
       <div>
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-controlled-open-select-label">Cell Type</InputLabel>
+        <InputLabel id="demo-controlled-open-select-label">Cell Type{"\n"}</InputLabel>
         <Select
           labelId="demo-controlled-open-select-label"
           id="demo-controlled-open-select"
@@ -90,6 +109,7 @@ export default function TextFieldSizes() {
       </FormControl>
       </div>
       <div>
+      <FormLabel component="legend" className={classes.formControl}>Parameters</FormLabel>
       <TextField
           label="Rate"
           id="outlined-size-normal"
@@ -113,20 +133,17 @@ export default function TextFieldSizes() {
       </div>
       <div>
       <FormControl component="fieldset" className={classes.formControl}>
-        <FormLabel component="legend">Assign responsibility</FormLabel>
+        <FormLabel component="legend">Recording</FormLabel>
         <FormGroup>
           <FormControlLabel
-            control={<Checkbox checked={gilad} onChange={handleChange} name="gilad" />}
-            label="Gilad Gray"
+            control={<Checkbox checked={spikes} onChange={handleChange2} name="spikes" />}
+            label="spikes"
           />
           <FormControlLabel
-            control={<Checkbox checked={jason} onChange={handleChange} name="jason" />}
-            label="Jason Killian"
+            control={<Checkbox checked={v} onChange={handleChange2} name="v" />}
+            label="v"
           />
-          <FormControlLabel
-            control={<Checkbox checked={antoine} onChange={handleChange} name="antoine" />}
-            label="Antoine Llorca"
-            /></FormGroup></FormControl>
+         </FormGroup></FormControl>
         </div>
     </form>
   );
