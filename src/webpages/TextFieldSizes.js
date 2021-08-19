@@ -19,11 +19,11 @@ import { FormatLineSpacing } from '@material-ui/icons';
 const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
-      margin: theme.spacing(3),
+      margin: theme.spacing(2),
       width: 200,
     },
   },  formControl: {
-    margin: theme.spacing(3),
+    margin: theme.spacing(2),
     minWidth: 120,
     maxWidth: 300,
   },
@@ -46,9 +46,13 @@ export default function TextFieldSizes() {
   const classes = useStyles();
   const [age, setAge] = React.useState('');
   const [open, setOpen] = React.useState(false);
+  const [valuesimulator, setSimulator] = React.useState('');
 
   const handleChange = (event) => {
     setAge(event.target.value);
+  };
+  const handleChangeSimulator = (event) => {
+    setSimulator(event.target.value);
   };
 
   const handleClose = () => {
@@ -89,22 +93,19 @@ export default function TextFieldSizes() {
       </div>
       <div>
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-controlled-open-select-label">Cell Type{"\n"}</InputLabel>
+        <InputLabel id="demo-controlled-open-select-label">Simulator</InputLabel>
         <Select
           labelId="demo-controlled-open-select-label"
           id="demo-controlled-open-select"
           open={open}
           onClose={handleClose}
           onOpen={handleOpen}
-          value={age}
-          onChange={handleChange}
+          value={valuesimulator}
+          onChange={handleChangeSimulator}
         >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={10}>SpikeSourcePoisson</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          <MenuItem value={"SpikeSourcePoisson"}>SpikeSourcePoisson</MenuItem>
+          <MenuItem value={"IF-curr-exp"}>IF-curr-exp</MenuItem>
+          <MenuItem value={"IF-cond-exp"}>IF-cond-exp</MenuItem>
         </Select>
       </FormControl>
       </div>
@@ -144,6 +145,7 @@ export default function TextFieldSizes() {
             label="v"
           />
          </FormGroup></FormControl>
+         <p>a : {valuesimulator}</p>
         </div>
     </form>
   );
