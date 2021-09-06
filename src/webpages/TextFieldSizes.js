@@ -46,10 +46,20 @@ export default function TextFieldSizes() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [valuesimulator, setSimulator] = React.useState('');
+  const [name, setName] = React.useState('');
+  const [size, setSize] = React.useState('');
+  
 
 
   const handleChangeSimulator = (event) => {
     setSimulator(event.target.value);
+  };
+
+  const handleChangeName = (event) => {
+    setName(event.target.value);
+  };
+  const handleChangeSize = (event) => {
+    setSize(event.target.value);
   };
 
   const handleClose = () => {
@@ -81,6 +91,8 @@ export default function TextFieldSizes() {
           id="outlined-size-normal"
           defaultValue=""
           variant="outlined"
+          value={name}
+          onChange={handleChangeName}
         /></div>
         <div>
         <TextField
@@ -88,6 +100,8 @@ export default function TextFieldSizes() {
           id="outlined-size-normal"
           defaultValue=""
           variant="outlined"
+          value={size}
+          onChange={handleChangeSize}
         />
       </div>
       
