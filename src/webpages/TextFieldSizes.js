@@ -48,7 +48,19 @@ export default function TextFieldSizes() {
   const [valuesimulator, setSimulator] = React.useState('');
   const [name, setName] = React.useState('');
   const [size, setSize] = React.useState('');
-  
+  const [rate, setRate] = React.useState('');
+  const [start, setStart] = React.useState('');
+  const [duration, setDuration] = React.useState('');
+  const [Vrest, setVrest] = React.useState('');
+  const [cm, setCm] = React.useState('');
+  const [vtresh, setVTresh] = React.useState('');
+  const [taurefrac, setTaurefrac] = React.useState('');
+  const [tausynE, setTausynE] = React.useState('');
+  const [tausynI, setTausynI] = React.useState('');
+  const [IOffset, setIoffset] = React.useState('');
+  const [taum, setTaum] = React.useState('');
+  const [vreset, setVreset] = React.useState('');
+  const [V, setV] = React.useState('');
 
 
   const handleChangeSimulator = (event) => {
@@ -61,7 +73,47 @@ export default function TextFieldSizes() {
   const handleChangeSize = (event) => {
     setSize(event.target.value);
   };
-
+  const handleChangeRate = (event) => {
+    setStart(event.target.value);
+  };
+  const handleChangeStart = (event) => {
+    setRate(event.target.value);
+  };
+  const handleChangeDuration = (event) => {
+    setDuration(event.target.value);
+  };
+  const handleChangeVrest = (event) => {
+    setVrest(event.target.value);
+  };
+  const handleChangeCm = (event) => {
+    setCm(event.target.value);
+  };
+  const handleChangeTaum = (event) => {
+    setTaum(event.target.value);
+  };
+  const handleChangeTaurefrac = (event) => {
+    setTaurefrac(event.target.value);
+  };
+  const handleChangeTauSynE = (event) => {
+    setTausynE(event.target.value);
+  };
+  const handleChangeTauSynI = (event) => {
+    setTausynI(event.target.value);
+  };
+  const handleChangeIOffset = (event) => {
+    setIoffset(event.target.value);
+  };
+  const handleChangeVReset = (event) => {
+    setVreset(event.target.value);
+  };
+  const handleChangeVTresh = (event) => {
+    setVTresh(event.target.value);
+  };
+  const handleChangeV = (event) => {
+    setV(event.target.value);
+  };
+  
+  
   const handleClose = () => {
     setOpen(false);
   };
@@ -134,6 +186,8 @@ export default function TextFieldSizes() {
           id="outlined-size-normal"
           defaultValue=""
           variant="outlined"
+          value={rate}
+          onChange={handleChangeRate}
         /></div>
         <div>
         <TextField
@@ -141,6 +195,8 @@ export default function TextFieldSizes() {
           id="outlined-size-normal"
           defaultValue=""
           variant="outlined"
+          value={start}
+          onChange={handleChangeStart}
         /></div>
               <div>
       <TextField
@@ -148,6 +204,8 @@ export default function TextFieldSizes() {
           id="outlined-size-normal"
           defaultValue=""
           variant="outlined"
+          value={duration}
+          onChange={handleChangeDuration}
         />
       </div>
       <div>
@@ -174,6 +232,9 @@ export default function TextFieldSizes() {
           id="outlined-size-normal"
           defaultValue=""
           variant="outlined"
+          value={Vrest}
+          onChange={handleChangeVrest}
+
         /></div>
         <div>
         <TextField
@@ -181,54 +242,72 @@ export default function TextFieldSizes() {
           id="outlined-size-normal"
           defaultValue=""
           variant="outlined"
+          value={cm}
+          onChange={handleChangeCm}
         />
         <TextField
           label="tau_m"
           id="outlined-size-normal"
           defaultValue=""
           variant="outlined"
+          value={taum}
+          onChange={handleChangeTaum}
         />
         <TextField
           label="tau_refrac"
           id="outlined-size-normal"
           defaultValue=""
           variant="outlined"
+          value={taurefrac}
+          onChange={handleChangeTaurefrac}
         />
         <TextField
           label="tau_syn_E"
           id="outlined-size-normal"
           defaultValue=""
           variant="outlined"
+          value={tausynE}
+          onChange={handleChangeTauSynE}
         />
         <TextField
           label="tau_syn_I"
           id="outlined-size-normal"
           defaultValue=""
           variant="outlined"
+          value={tausynI}
+          onChange={handleChangeTauSynI}
         />
         <TextField
           label="i_offset"
           id="outlined-size-normal"
           defaultValue=""
           variant="outlined"
+          value={IOffset}
+          onChange={handleChangeIOffset}
         />
         <TextField
           label="v_reset"
           id="outlined-size-normal"
           defaultValue=""
           variant="outlined"
+          value={vreset}
+          onChange={handleChangeVReset}
         />
         <TextField
           label="v_tresh"
           id="outlined-size-normal"
           defaultValue=""
           variant="outlined"
+          value={vtresh}
+          onChange={handleChangeVTresh}
         />
         <TextField
           label="v : Initial value"
           id="outlined-size-normal"
           defaultValue=""
           variant="outlined"
+          value={V}
+          onChange={handleChangeV}
         />
 </div>
           <div>
