@@ -62,6 +62,9 @@ export default function TextFieldSizes() {
   const [vreset, setVreset] = React.useState('');
   const [V, setV] = React.useState('');
 
+  function CheckCondition () {
+    //if (rate !='' and start !='' && Duration !='' && Name !='' && size !='' && Name!='')
+  }
 
   const handleChangeSimulator = (event) => {
     setSimulator(event.target.value);
@@ -324,7 +327,12 @@ export default function TextFieldSizes() {
           />
          </FormGroup></FormControl>
          <p>a : {valuesimulator}</p>
-        </div></React.Fragment>}
+        </div>
+</React.Fragment>}
+<div><Button variant="contained" color="primary">
+        Confirm
+      </Button>
+      <Button variant="contained">Cancel</Button></div>
     </form>
   );
 }
