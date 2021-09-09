@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-
+let condi = false;
 
 export default function TextFieldSizes() {
   const classes = useStyles();
@@ -63,8 +63,11 @@ export default function TextFieldSizes() {
   const [V, setV] = React.useState('');
 
   function CheckCondition () {
-    //if (rate !='' and start !='' && Duration !='' && Name !='' && size !='' && Name!='')
-  }
+    
+    if ((rate !="") || (start !='') || (duration !='') || (name !='') || (size !='') )
+    {
+ condi = true;
+  }}
 
   const handleChangeSimulator = (event) => {
     setSimulator(event.target.value);
@@ -329,10 +332,11 @@ export default function TextFieldSizes() {
          <p>a : {valuesimulator}</p>
         </div>
 </React.Fragment>}
-<div><Button variant="contained" color="primary">
+<div><Button variant="contained" color="primary" onClick={CheckCondition}>
         Confirm
       </Button>
       <Button variant="contained">Cancel</Button></div>
+      {condi &&<div> All textfield must be completed</div> }
     </form>
   );
 }
