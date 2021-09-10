@@ -63,10 +63,11 @@ export default function TextFieldSizes() {
   const [V, setV] = React.useState('');
 
   function CheckCondition () {
-    
-    if ((rate !="") || (start !='') || (duration !='') || (name !='') || (size !='') )
+    console.log('✨ Ceci est un clic ✨')
+    if ((rate !=="") || (start !=='') || (duration !=='') || (name !=='') || (size !=='') )
     {
  condi = true;
+ console.log('✨ Ceci est un clic 2 luxe✨')
   }}
 
   const handleChangeSimulator = (event) => {
@@ -80,10 +81,10 @@ export default function TextFieldSizes() {
     setSize(event.target.value);
   };
   const handleChangeRate = (event) => {
-    setStart(event.target.value);
+    setRate(event.target.value);
   };
   const handleChangeStart = (event) => {
-    setRate(event.target.value);
+    setStart(event.target.value);
   };
   const handleChangeDuration = (event) => {
     setDuration(event.target.value);
