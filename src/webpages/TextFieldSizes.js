@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-let condi = false;
+
 
 export default function TextFieldSizes() {
   const classes = useStyles();
@@ -61,12 +61,13 @@ export default function TextFieldSizes() {
   const [taum, setTaum] = React.useState('');
   const [vreset, setVreset] = React.useState('');
   const [V, setV] = React.useState('');
-
-  function CheckCondition () {
+  
+  let condi = true;
+  function CheckCondition (condi) {
     console.log('✨ Ceci est un clic ✨')
     if ((rate !=="") || (start !=='') || (duration !=='') || (name !=='') || (size !=='') )
     {
- condi = true;
+ condi = false;
  console.log('✨ Ceci est un clic 2 luxe✨')
   }}
 
@@ -228,7 +229,7 @@ export default function TextFieldSizes() {
             label="v"
           />
          </FormGroup></FormControl>
-         <p>a : {valuesimulator}</p>
+         <p>simulator : {valuesimulator}</p>
         </div></React.Fragment>}
 
         {valuesimulator=="IF-curr-exp" && <React.Fragment>
@@ -330,10 +331,10 @@ export default function TextFieldSizes() {
             label="v"
           />
          </FormGroup></FormControl>
-         <p>a : {valuesimulator}</p>
+         <p>simulator : {valuesimulator}</p>
         </div>
 </React.Fragment>}
-<div><Button variant="contained" color="primary" onClick={CheckCondition}>
+<div><Button variant="contained" color="primary" onClick={CheckCondition(condi)}>
         Confirm
       </Button>
       <Button variant="contained">Cancel</Button></div>
