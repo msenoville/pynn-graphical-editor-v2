@@ -61,15 +61,12 @@ export default function TextFieldSizes() {
   const [taum, setTaum] = React.useState('');
   const [vreset, setVreset] = React.useState('');
   const [V, setV] = React.useState('');
+  const [condition, setCondition] = React.useState(false);
   
-  let condi = true;
-  function CheckCondition (condi) {
-    console.log('✨ Ceci est un clic ✨')
-    if ((rate !=="") || (start !=='') || (duration !=='') || (name !=='') || (size !=='') )
-    {
- condi = false;
- console.log('✨ Ceci est un clic 2 luxe✨')
-  }}
+
+
+
+
 
   const handleChangeSimulator = (event) => {
     setSimulator(event.target.value);
@@ -140,6 +137,8 @@ export default function TextFieldSizes() {
 
   const { spikes, v } = state;
   const error = [spikes, v].filter((v) => v).length !== 2;
+
+  
 
 
 
@@ -334,11 +333,18 @@ export default function TextFieldSizes() {
          <p>simulator : {valuesimulator}</p>
         </div>
 </React.Fragment>}
-<div><Button variant="contained" color="primary" onClick={CheckCondition(condi)}>
+{((rate !=="") && (start !=='') && (duration !=='') && (name !=='') && (size !=='') ) ? 
+<React.Fragment>
+   <div><Button variant="contained" color="primary" onClick={() => setCondition(false)}>
+        Confirm :{condition}
+      </Button>
+      <Button variant="contained">Cancel</Button></div></React.Fragment> : 
+      <React.Fragment>
+        <div><Button variant="contained" color="primary">
         Confirm
       </Button>
-      <Button variant="contained">Cancel</Button></div>
-      {condi &&<div> All textfield must be completed</div> }
+      <Button variant="contained">Cancel</Button></div></React.Fragment>}
+
     </form>
   );
 }
