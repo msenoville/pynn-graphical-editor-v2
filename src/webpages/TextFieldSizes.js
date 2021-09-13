@@ -335,7 +335,7 @@ export default function TextFieldSizes() {
 </React.Fragment>}
 {((rate !=="") && (start !=='') && (duration !=='') && (name !=='') && (size !=='') ) ? 
 <React.Fragment>
-   <div><Button variant="contained" color="primary" onClick={() => setCondition(false)}>
+   <div><Button variant="contained" color="primary" onClick={() => setCondition(true)}>
         Confirm :{condition}
       </Button>
       <Button variant="contained">Cancel</Button></div></React.Fragment> : 
