@@ -1,17 +1,7 @@
 import { mxUtils, mxEvent, mxCell, mxGeometry, mxDragSource, mxPopupMenu, mxHandle } from "mxgraph-js";
-import React, { useState } from 'react';
-import Popup from 'reactjs-popup';
-import 'reactjs-popup/dist/index.css';
-import ModalTest from "./ModalTest";
-// import ControlledPopup from "./ControlledPopup"
-// import Popup from 'reactjs-popup';
-
-
 
 const SetMXObjs = (graph, objLists) => {
 	var idx = 0;
-
-	// const [openi, setOpeni] = useState(false);
 
 	const setObj = function (MXObjImgClass, width, height, value) {
 
@@ -28,6 +18,26 @@ const SetMXObjs = (graph, objLists) => {
 				return graph;
 			}
 			return null;
+		};
+
+		const createPopupMenu = function (graph, menu, cell, evt) {
+			if (cell) {
+			  if (cell.edge === true) {
+				menu.addItem("Delete Projection", null, function() {
+				  graph.removeCells([cell]);
+				  mxEvent.consume(evt);
+				});
+			  } else {
+				menu.addItem("Edit Population", null, function() {
+				  // mxUtils.alert('Edit child node: ');
+				  // selectionChanged(graph)
+				});
+				menu.addItem("Delete Population", null, function() {
+				  graph.removeCells([cell]);
+				  mxEvent.consume(evt);
+				});
+			  }
+			}
 		};
 
 		const objectLists = document.getElementById(objLists);
@@ -51,40 +61,6 @@ const SetMXObjs = (graph, objLists) => {
 			if (cells != null && cells.length > 0) {
 				graph.setSelectionCells(cells);
 			}
-			var mxPopupMenuShowMenu = mxPopupMenu.prototype.showMenu;
-			graph.popupMenuHandler.factoryMethod = function(menu, cell, evt)
-			{
-				menu.addItem('Item 1', null, function()
-				{
-					alert('Item 1');
-				});
-				
-				menu.addItem('Item 2', null, function()
-				{
-					alert('Item 2');
-				});
-
-				menu.addSeparator();
-				
-				var submenu1 = menu.addItem('Submenu 1', null, null);
-				
-				menu.addItem('Subitem 1', null, function()
-				{
-					alert('Subitem 1');
-				}, submenu1);
-				menu.addItem('Subitem 1', null, function()
-				{
-					alert('Subitem 2');
-				}, submenu1);
-				menu.addItem('Test',null,function()
-				{
-					console.log('test');
-				}, submenu1);
-				// mxPopupMenuShowMenu.apply(this, arguments);
-
-				this.div.style.overflowY = 'auto';
-				this.div.style.overflowX = 'hidden';
-				this.div.style.maxHeight = '160px';};
 		};
 
 		// Creates the element that is being for the actual preview.
@@ -96,6 +72,10 @@ const SetMXObjs = (graph, objLists) => {
 		var ds = mxUtils.makeDraggable(img, dropGraph, dropSuccessCb, dragElt, null, null, graph.autoscroll, true);
 		// Restores original drag icon while outside of graph
 		ds.createDragElement = mxDragSource.prototype.createDragElement;
+
+		graph.popupMenuHandler.factoryMethod = function(menu, cell, evt) {
+			createPopupMenu(graph, menu, cell, evt);
+		};
 	}
 
 	setObj('rectangle', 120, 80, {

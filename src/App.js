@@ -18,13 +18,15 @@ import setAnchors from "./mxGraph/setAnchors";
 import setDefault from "./mxGraph/setDefault";
 
 import "./css/main.css";
-import "./css/images.css";
-import "./css/common.css";
+import "./css/graph.css";
+// import "./css/common.css";
+import "./css/popupmenu.css";
+
 
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import ModalTest from "./mxGraph/ModalTest"
-import ControlledPopup from "./mxGraph/ControlledPopup";
+import ControlledPopup from "./mxGraph/PopupMenu";
 import setMXObjs from "./mxGraph/setMXObjs";
 
 
