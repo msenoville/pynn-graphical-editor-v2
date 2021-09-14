@@ -12,7 +12,11 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
 import { FormatLineSpacing } from '@material-ui/icons';
-
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import Slider from '@material-ui/core/Slider';
+import Input from '@material-ui/core/Input';
+import VolumeUp from '@material-ui/icons/VolumeUp';
 
 
 
@@ -37,6 +41,12 @@ const useStyles = makeStyles((theme) => ({
   noLabel: {
     marginTop: theme.spacing(3),
   },
+    root: {
+      width: 250,
+    },
+    input: {
+      width: 42,
+    },
 }));
 
 
@@ -64,6 +74,23 @@ export default function TextFieldSizes() {
   const [condition, setCondition] = React.useState(false);
   
 
+  const [value, setValue] = React.useState(30);
+
+  const handleSliderChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  const handleInputChange = (event) => {
+    setValue(event.target.value === '' ? '' : Number(event.target.value));
+  };
+
+  const handleBlur = () => {
+    if (value < 0) {
+      setValue(0);
+    } else if (value > 100) {
+      setValue(100);
+    }
+  };
 
 
 
@@ -242,7 +269,11 @@ export default function TextFieldSizes() {
           value={Vrest}
           onChange={handleChangeVrest}
 
-        /></div>
+        />          <Slider
+        value={typeof value === 'number' ? value : 0}
+        onChange={handleSliderChange}
+        aria-labelledby="input-slider"
+      /></div>
         <div>
         <TextField
           label="cm"
@@ -317,6 +348,17 @@ export default function TextFieldSizes() {
           onChange={handleChangeV}
         />
 </div>
+<div className={classes.root}>
+      <Grid container spacing={2} alignItems="center">
+        <Grid item xs>
+          <Slider
+            value={typeof value === 'number' ? value : 0}
+            onChange={handleSliderChange}
+            aria-labelledby="input-slider"
+          />
+        </Grid>
+      </Grid>
+    </div>
           <div>
       <FormControl component="fieldset" className={classes.formControl}>
         <FormLabel component="legend">Recording</FormLabel>
@@ -335,12 +377,12 @@ export default function TextFieldSizes() {
 </React.Fragment>}
 {((rate !=="") && (start !=='') && (duration !=='') && (name !=='') && (size !=='') ) ? 
 <React.Fragment>
-   <div><Button variant="contained" color="primary" onClick={() => setCondition(true)}>
-        Confirm :{condition}
+   <div><Button variant="contained" color="primary" >
+        Confirm 
       </Button>
       <Button variant="contained">Cancel</Button></div></React.Fragment> : 
       <React.Fragment>
-        <div><Button variant="contained" color="primary">
+        <div><Button variant="contained" color="primary" >
         Confirm
       </Button>
       <Button variant="contained">Cancel</Button></div></React.Fragment>}
