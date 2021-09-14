@@ -1,4 +1,9 @@
 import { mxUtils, mxEvent, mxCell, mxGeometry, mxDragSource, mxPopupMenu, mxHandle } from "mxgraph-js";
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+import ModalTest from "./ModalTest";
+import ControlledPopup from "./ControlledPopup"
+import React, { useState } from 'react';
 
 const SetMXObjs = (graph, objLists) => {
 	var idx = 0;
