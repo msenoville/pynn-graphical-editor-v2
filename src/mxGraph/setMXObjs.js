@@ -2,7 +2,7 @@ import { mxUtils, mxEvent, mxCell, mxGeometry, mxDragSource, mxPopupMenu, mxHand
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import ModalTest from "./ModalTest";
-import ControlledPopup from "./ControlledPopup"
+// import ControlledPopup from "./ControlledPopup"
 import React, { useState } from 'react';
 
 const setMXObjs = (graph, objLists) => {
