@@ -61,7 +61,7 @@ const setMXObjs = (graph, objLists) => {
 			if (cells != null && cells.length > 0) {
 				graph.setSelectionCells(cells);
 			}
-			graph.popupMenuHandler.factoryMethod = createPopupMenu(graph, menu, cell, evt);
+			// graph.popupMenuHandler.factoryMethod = createPopupMenu(graph, menu, cell, evt);
 		};
 
 		// Creates the element that is being for the actual preview.
@@ -73,10 +73,11 @@ const setMXObjs = (graph, objLists) => {
 		// Restores original drag icon while outside of graph
 		ds.createDragElement = mxDragSource.prototype.createDragElement;
 
+	graph.popupMenuHandler.factoryMethod = function(menu, cell, evt) {
+		createPopupMenu(graph, menu, cell, evt);
+	  };
+	
 	}
-	// graph.popupMenuHandler.factoryMethod = function(menu, cell, evt) {
-	// 	return that.createPopupMenu(graph, menu, cell, evt);
-	//   };
 
 	setObj('rectangle', 120, 80, {
 		// Font
