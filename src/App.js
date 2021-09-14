@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	Link
+  } from "react-router-dom";
 
-import { mxGraph, mxRubberband, mxShape, mxConnectionHandler, mxGraphModel, mxGeometry } from "mxgraph-js";
+import { mxGraph, mxRubberband, mxShape, mxConnectionHandler, mxGraphModel, mxGeometry,mxPopupMenu,mxEvent } from "mxgraph-js";
 
 import MainCanvas from "./mxGraph/MainCanvas";
 import ObjSelect from "./mxGraph/ObjSelect";
@@ -11,14 +17,31 @@ import setAnchors from "./mxGraph/setAnchors";
 import setDefault from "./mxGraph/setDefault";
 
 import "./css/main.css";
-import "./css/images.css";
-import "./css/common.css";
+import "./css/graph.css";
+// import "./css/common.css";
+import "./css/popupmenu.css";
+
+
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+import ModalTest from "./mxGraph/ModalTest"
+import ControlledPopup from "./mxGraph/PopupMenu";
+import setMXObjs from "./mxGraph/setMXObjs";
+
+
+
+
 
 function App(props) {
 	// mxGraph object
 	const [graph, setGraph] = useState(null);
 	const [callObjSelect, setCallObjSelect] = useState(null);
 	const [callToolbar, setCallToolbar] = useState(null);
+	const [currentCollab, setCurrentCollab] = React.useState(null);
+	const [open, setOpen] = useState(false);
+	
+
+
 
 	//Called when the graph changes
 	useEffect(() => {
@@ -55,6 +78,12 @@ function App(props) {
 
       		//Settings toolbar
 			setCallToolbar("setToolbar");
+
+
+
+
+
+
 		}
 	}, [graph]);
 
@@ -63,13 +92,27 @@ function App(props) {
 			{/* <React.Fragment> */}
 			{/* <td>  */}
 		  		<ObjSelect id="objectSelector" graph={graph} parentCall={callObjSelect}/>
+
+
 			{/* </td> */}
 			{/* </React.Fragment> */}
      	
       <Toolbar id="toolbar" graph={graph} parentCall={callToolbar}/>
       <MainCanvas id="canvas" setGraph={setGraph} />
+	  
+	 
+	  
 		</div>
+
+
 	);
+
+
 }
+//<ControlledPopup open={open} setOpen={setOpen}/>
+
+
+
+
 
 export default App;

@@ -1,0 +1,6 @@
+<CreateTaskNode
+            currentTask={this.state.currentTask}
+            visible={this.state.createVisile}
+            handleCancel={this.handleCancel}
+            handleConfirm={this.handleConfirm}
+          />

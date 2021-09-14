@@ -1,6 +1,11 @@
-import { mxUtils, mxEvent, mxCell, mxGeometry, mxDragSource } from "mxgraph-js";
+import { mxUtils, mxEvent, mxCell, mxGeometry, mxDragSource, mxPopupMenu, mxHandle } from "mxgraph-js";
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+import ModalTest from "./ModalTest";
+import ControlledPopup from "./ControlledPopup"
+import React, { useState } from 'react';
 
-const setMXObjs = (graph, objLists) => {
+const SetMXObjs = (graph, objLists) => {
 	var idx = 0;
 
 	const setObj = function (MXObjImgClass, width, height, value) {
@@ -23,16 +28,16 @@ const setMXObjs = (graph, objLists) => {
 		const createPopupMenu = function (graph, menu, cell, evt) {
 			if (cell) {
 			  if (cell.edge === true) {
-				menu.addItem("Delete connection", null, function() {
-				//   graph.removeCells([cell]);
-				//   mxEvent.consume(evt);
+				menu.addItem("Delete Projection", null, function() {
+				  graph.removeCells([cell]);
+				  mxEvent.consume(evt);
 				});
 			  } else {
-				menu.addItem("Edit child node", null, function() {
+				menu.addItem("Edit Population", null, function() {
 				  // mxUtils.alert('Edit child node: ');
 				  // selectionChanged(graph)
 				});
-				menu.addItem("Delete child node", null, function() {
+				menu.addItem("Delete Population", null, function() {
 				  graph.removeCells([cell]);
 				  mxEvent.consume(evt);
 				});
@@ -73,10 +78,9 @@ const setMXObjs = (graph, objLists) => {
 		// Restores original drag icon while outside of graph
 		ds.createDragElement = mxDragSource.prototype.createDragElement;
 
-	graph.popupMenuHandler.factoryMethod = function(menu, cell, evt) {
-		createPopupMenu(graph, menu, cell, evt);
-	  };
-	
+		graph.popupMenuHandler.factoryMethod = function(menu, cell, evt) {
+			createPopupMenu(graph, menu, cell, evt);
+		};
 	}
 
 	setObj('rectangle', 120, 80, {
@@ -93,4 +97,4 @@ const setMXObjs = (graph, objLists) => {
 	});
 
 }
-export default setMXObjs;
+export default SetMXObjs;
