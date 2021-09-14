@@ -8,7 +8,6 @@
     "@testing-library/user-event": "^12.8.3",
     "html2canvas": "^1.0.0-rc.7",
     "js-file-download": "^0.4.12",
-    "material-ui-dropzone": "^3.5.0",
     "mxgraph-js": "1.0.1",
     "mxgraph-js-dt": "1.0.4",
     "react": "^17.0.2",
