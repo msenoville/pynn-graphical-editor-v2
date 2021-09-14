@@ -5,7 +5,7 @@ import ModalTest from "./ModalTest";
 import ControlledPopup from "./ControlledPopup"
 import React, { useState } from 'react';
 
-const SetMXObjs = (graph, objLists) => {
+const setMXObjs = (graph, objLists) => {
 	var idx = 0;
 
 	const setObj = function (MXObjImgClass, width, height, value) {
@@ -97,4 +97,4 @@ const SetMXObjs = (graph, objLists) => {
 	});
 
 }
-export default SetMXObjs;
+export default setMXObjs;

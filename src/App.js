@@ -1,10 +1,4 @@
 import React, { useState, useEffect } from "react";
-import {
-	BrowserRouter as Router,
-	Switch,
-	Route,
-	Link
-  } from "react-router-dom";
 
 import { mxGraph, mxRubberband, mxShape, mxConnectionHandler, mxGraphModel, mxGeometry,mxPopupMenu,mxEvent } from "mxgraph-js";
 
@@ -18,12 +12,13 @@ import setDefault from "./mxGraph/setDefault";
 
 import "./css/main.css";
 import "./css/graph.css";
+import "./css/images.css";
 // import "./css/common.css";
 import "./css/popupmenu.css";
 
 
 import Popup from 'reactjs-popup';
-import 'reactjs-popup/dist/index.css';
+// import 'reactjs-popup/dist/index.css';
 import ModalTest from "./mxGraph/ModalTest"
 import ControlledPopup from "./mxGraph/PopupMenu";
 import setMXObjs from "./mxGraph/setMXObjs";
@@ -37,11 +32,6 @@ function App(props) {
 	const [graph, setGraph] = useState(null);
 	const [callObjSelect, setCallObjSelect] = useState(null);
 	const [callToolbar, setCallToolbar] = useState(null);
-	const [currentCollab, setCurrentCollab] = React.useState(null);
-	const [open, setOpen] = useState(false);
-	
-
-
 
 	//Called when the graph changes
 	useEffect(() => {
