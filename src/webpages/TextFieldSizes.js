@@ -17,9 +17,6 @@ import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 import Input from '@material-ui/core/Input';
 import VolumeUp from '@material-ui/icons/VolumeUp';
-
-
-
 const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
@@ -48,10 +45,6 @@ const useStyles = makeStyles((theme) => ({
       width: 42,
     },
 }));
-
-
-
-
 export default function TextFieldSizes() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
@@ -72,18 +65,14 @@ export default function TextFieldSizes() {
   const [vreset, setVreset] = React.useState('');
   const [V, setV] = React.useState('');
   const [condition, setCondition] = React.useState(false);
-  
-
   const [value, setValue] = React.useState(30);
-
   const handleSliderChange = (event, newValue) => {
-    setValue(newValue);
+   setValue(newValue);
+   setVrest(newValue);
   };
-
   const handleInputChange = (event) => {
     setValue(event.target.value === '' ? '' : Number(event.target.value));
   };
-
   const handleBlur = () => {
     if (value < 0) {
       setValue(0);
@@ -91,14 +80,9 @@ export default function TextFieldSizes() {
       setValue(100);
     }
   };
-
-
-
-
   const handleChangeSimulator = (event) => {
     setSimulator(event.target.value);
   };
-
   const handleChangeName = (event) => {
     setName(event.target.value);
   };
@@ -144,31 +128,21 @@ export default function TextFieldSizes() {
   const handleChangeV = (event) => {
     setV(event.target.value);
   };
-  
-  
   const handleClose = () => {
     setOpen(false);
   };
-
   const handleOpen = () => {
     setOpen(true);
   };
   const [state, setState] = React.useState({
     spikes: false,
     v: false,
-    
   });
   const handleChange2 = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
   };
-
   const { spikes, v } = state;
   const error = [spikes, v].filter((v) => v).length !== 2;
-
-  
-
-
-
   return (
     <form className={classes.root} noValidate autoComplete="off">
       <div>
@@ -190,7 +164,6 @@ export default function TextFieldSizes() {
           onChange={handleChangeSize}
         />
       </div>
-      
       <div>
       <FormControl className={classes.formControl}>
         <InputLabel id="demo-controlled-open-select-label">Simulator</InputLabel>
@@ -202,7 +175,7 @@ export default function TextFieldSizes() {
           onOpen={handleOpen}
           value={valuesimulator}
           onChange={handleChangeSimulator}
-        >          
+        >
         <MenuItem value="None">
         <em>None</em>
         </MenuItem>
@@ -212,7 +185,6 @@ export default function TextFieldSizes() {
         </Select>
       </FormControl>
       </div>
-
       {valuesimulator=="SpikeSourcePoisson" &&   <React.Fragment><div>
       <FormLabel component="legend" className={classes.formControl}>Parameters</FormLabel>
       <TextField
@@ -257,7 +229,6 @@ export default function TextFieldSizes() {
          </FormGroup></FormControl>
          <p>simulator : {valuesimulator}</p>
         </div></React.Fragment>}
-
         {valuesimulator=="IF-curr-exp" && <React.Fragment>
         <div>
       <FormLabel component="legend" className={classes.formControl}>Parameters</FormLabel>
@@ -268,7 +239,6 @@ export default function TextFieldSizes() {
           variant="outlined"
           value={Vrest}
           onChange={handleChangeVrest}
-
         />          <Slider
         value={typeof value === 'number' ? value : 0}
         onChange={handleSliderChange}
@@ -348,17 +318,6 @@ export default function TextFieldSizes() {
           onChange={handleChangeV}
         />
 </div>
-<div className={classes.root}>
-      <Grid container spacing={2} alignItems="center">
-        <Grid item xs>
-          <Slider
-            value={typeof value === 'number' ? value : 0}
-            onChange={handleSliderChange}
-            aria-labelledby="input-slider"
-          />
-        </Grid>
-      </Grid>
-    </div>
           <div>
       <FormControl component="fieldset" className={classes.formControl}>
         <FormLabel component="legend">Recording</FormLabel>
@@ -375,18 +334,22 @@ export default function TextFieldSizes() {
          <p>simulator : {valuesimulator}</p>
         </div>
 </React.Fragment>}
-{((rate !=="") && (start !=='') && (duration !=='') && (name !=='') && (size !=='') ) ? 
+{((rate !=="") && (start !=='') && (duration !=='') && (name !=='') && (size !=='') ) ?
 <React.Fragment>
    <div><Button variant="contained" color="primary" >
-        Confirm 
+        Confirm
       </Button>
-      <Button variant="contained">Cancel</Button></div></React.Fragment> : 
+      <Button variant="contained">Cancel</Button></div></React.Fragment> :
       <React.Fragment>
         <div><Button variant="contained" color="primary" >
         Confirm
       </Button>
       <Button variant="contained">Cancel</Button></div></React.Fragment>}
-
     </form>
   );
 }
+
+
+
+
+
