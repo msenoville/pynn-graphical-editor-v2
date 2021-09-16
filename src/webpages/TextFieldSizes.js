@@ -62,24 +62,20 @@ export default function TextFieldSizes() {
   const [tausynI, setTausynI] = React.useState('');
   const [IOffset, setIoffset] = React.useState('');
   const [taum, setTaum] = React.useState('');
-  const [vreset, setVreset] = React.useState('');
+  const [vreset, setVreset] = React.useState(0);
   const [V, setV] = React.useState('');
   const [condition, setCondition] = React.useState(false);
-  const [value, setValue] = React.useState(30);
-  const handleSliderChange = (event, newValue) => {
-   setValue(newValue);
-   setVrest(newValue);
+
+  const handleSliderChangeRate = (event, newValue) => {
+   setRate(newValue);
   };
-  const handleInputChange = (event) => {
-    setValue(event.target.value === '' ? '' : Number(event.target.value));
-  };
-  const handleBlur = () => {
-    if (value < 0) {
-      setValue(0);
-    } else if (value > 100) {
-      setValue(100);
-    }
-  };
+  const handleSliderChangeStart = (event, newValue) => {
+    setStart(newValue);
+   };
+  const handleSliderChangeDuration = (event, newValue) => {
+    setDuration(newValue);
+   };
+
   const handleChangeSimulator = (event) => {
     setSimulator(event.target.value);
   };
@@ -194,7 +190,12 @@ export default function TextFieldSizes() {
           variant="outlined"
           value={rate}
           onChange={handleChangeRate}
-        /></div>
+        />
+        <div><Slider
+        value={typeof rate === 'number' ? rate : 0}
+        onChange={handleSliderChangeRate}
+        aria-labelledby="input-slider"
+      /></div></div>
         <div>
         <TextField
           label="Start"
@@ -203,7 +204,11 @@ export default function TextFieldSizes() {
           variant="outlined"
           value={start}
           onChange={handleChangeStart}
-        /></div>
+        /><Slider
+        value={typeof start === 'number' ? start : 0}
+        onChange={handleSliderChangeStart}
+        aria-labelledby="input-slider"
+      /></div>
               <div>
       <TextField
           label="Duration"
@@ -212,7 +217,11 @@ export default function TextFieldSizes() {
           variant="outlined"
           value={duration}
           onChange={handleChangeDuration}
-        />
+        /><Slider
+        value={typeof duration === 'number' ? duration : 0}
+        onChange={handleSliderChangeDuration}
+        aria-labelledby="input-slider"
+      />
       </div>
       <div>
       <FormControl component="fieldset" className={classes.formControl}>
@@ -239,11 +248,7 @@ export default function TextFieldSizes() {
           variant="outlined"
           value={Vrest}
           onChange={handleChangeVrest}
-        />          <Slider
-        value={typeof value === 'number' ? value : 0}
-        onChange={handleSliderChange}
-        aria-labelledby="input-slider"
-      /></div>
+        />          </div>
         <div>
         <TextField
           label="cm"
