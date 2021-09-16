@@ -5,17 +5,17 @@ import ModalTest from "./ModalTest";
 // import ControlledPopup from "./ControlledPopup"
 import React, { useState } from 'react';
 
-const setMXObjs = (graph, objLists) => {
+const setMXObjs = (graph, objLists, valid, setValid) => {
 	var idx = 0;
 
-	const setObj = function (MXObjImgClass, width, height, value) {
+	const setObj = function (MXObjImgClass, width, height, value, valid, setValid) {
 
 		//Determine whether the Drop is valid
 		const dropGraph = function (evt) {
 			const x = mxEvent.getClientX(evt);
 			const y = mxEvent.getClientY(evt);
 
-			//Get the topmost element on the coordinates of the mouse click
+			//Get the element on the coordinates of the mouse click
 			const elt = document.elementFromPoint(x, y);
 
 			//If this element falls in the graph
@@ -25,7 +25,8 @@ const setMXObjs = (graph, objLists) => {
 			return null;
 		};
 
-		const createPopupMenu = function (graph, menu, cell, evt) {
+		//Defines the popup menu for cells 
+		const createPopupMenu = function (graph, menu, cell, evt, valid, setValid) {
 			if (cell) {
 			  if (cell.edge === true) {
 				menu.addItem("Delete Projection", null, function() {
@@ -36,6 +37,7 @@ const setMXObjs = (graph, objLists) => {
 				menu.addItem("Edit Population", null, function() {
 				  // mxUtils.alert('Edit child node: ');
 				  // selectionChanged(graph)
+				  setValid(true)
 				});
 				menu.addItem("Delete Population", null, function() {
 				  graph.removeCells([cell]);
@@ -57,7 +59,7 @@ const setMXObjs = (graph, objLists) => {
 		li.appendChild(img);
 		objectLists.appendChild(li);
 
-		//Create a new vertex after the drop is successful
+		//Creates a new vertex after the drop is successful
 		const dropSuccessCb = function (graph, evt, target, x, y) {
 			value.MXtype = MXObjImgClass;
 			const cell = new mxCell(value, new mxGeometry(0, 0, width, height), MXObjImgClass);
@@ -75,14 +77,18 @@ const setMXObjs = (graph, objLists) => {
 		dragElt.style.width = width + "px";
 		dragElt.style.height = height + "px";
 		var ds = mxUtils.makeDraggable(img, dropGraph, dropSuccessCb, dragElt, null, null, graph.autoscroll, true);
+		
 		// Restores original drag icon while outside of graph
 		ds.createDragElement = mxDragSource.prototype.createDragElement;
 
-		graph.popupMenuHandler.factoryMethod = function(menu, cell, evt) {
-			createPopupMenu(graph, menu, cell, evt);
+		// Creates the popup menu
+		graph.popupMenuHandler.factoryMethod = function(menu, cell, evt, valid) {
+			createPopupMenu(graph, menu, cell, evt, valid, setValid);
 		};
 	}
 
+	// For now, one draggable object... 
+	// We can add more shapes...  
 	setObj('rectangle', 120, 80, {
 		// Font
 		'text': '',
@@ -94,7 +100,10 @@ const setMXObjs = (graph, objLists) => {
 		'strokecolor': '#000000',
 		'strokewidth': 1,
 		'opacity': 100
-	});
+	},
+	valid,
+	setValid
+	);
 
 }
 export default setMXObjs;

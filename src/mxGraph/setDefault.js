@@ -1,4 +1,5 @@
 export default function setDefault(graph, mxConnectionHandler) {
+
     // Overrides method to provide a cell label in the display
     graph.convertValueToString = function (cell) {
         if (cell.value !== null) {
@@ -13,7 +14,6 @@ export default function setDefault(graph, mxConnectionHandler) {
     var graphCellLabelChanged = graph.cellLabelChanged;
     graph.cellLabelChanged = function (cell, value, autoSize) {
         console.log('celllabelchanged!');
-        // 複製出一個新 cell.value object
         //Copy a new cell.value object
         var elt = { ...cell.value };
         elt.text = value;

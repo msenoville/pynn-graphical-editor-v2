@@ -1,6 +1,7 @@
 import { mxConnectionConstraint, mxPoint } from "mxgraph-js";
 
 export default function Anchors(_mxGraph, _mxShape) {
+
 	// Overridden to define per-shape connection points
 	_mxGraph.prototype.getAllConnectionConstraints = function(terminal, source) {
 		if (terminal != null && terminal.shape != null) {
@@ -15,6 +16,7 @@ export default function Anchors(_mxGraph, _mxShape) {
 
 		return null;
 	};
+	
 	// Define anchors on a shape
 	_mxShape.prototype.constraints = [
 		new mxConnectionConstraint(new mxPoint(0.25, 0), true),
