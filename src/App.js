@@ -5,10 +5,13 @@ import { mxGraph, mxRubberband, mxShape, mxConnectionHandler, mxGraphModel, mxGe
 import MainCanvas from "./mxGraph/MainCanvas";
 import ObjSelect from "./mxGraph/ObjSelect";
 import Toolbar from "./mxGraph/Toolbar";
+import ModalForm from "./mxGraph/ModalForm";
+
 
 import setStylesheet from "./mxGraph/setStylesheet";
 import setAnchors from "./mxGraph/setAnchors";
 import setDefault from "./mxGraph/setDefault";
+
 
 import "./css/main.css";
 import "./css/graph.css";
@@ -16,22 +19,24 @@ import "./css/images.css";
 // import "./css/common.css";
 import "./css/popupmenu.css";
 
-
-import Popup from 'reactjs-popup';
+// import Popup from 'reactjs-popup';
 // import 'reactjs-popup/dist/index.css';
-import ModalTest from "./mxGraph/ModalTest"
-import ControlledPopup from "./mxGraph/PopupMenu";
-import setMXObjs from "./mxGraph/setMXObjs";
-
-
+// import ModalTest from "./mxGraph/ModalTest"
+// import ControlledPopup from "./mxGraph/PopupMenu";
+// import setMXObjs from "./mxGraph/setMXObjs";
 
 
 
 function App(props) {
+
 	// mxGraph object
 	const [graph, setGraph] = useState(null);
 	const [callObjSelect, setCallObjSelect] = useState(null);
 	const [callToolbar, setCallToolbar] = useState(null);
+	const [callModalForm, setCallModalForm] = useState(null);
+
+	const [validated, setValidated] = useState(false)
+
 
 	//Called when the graph changes
 	useEffect(() => {
@@ -44,7 +49,7 @@ function App(props) {
 			graph.init = false;
 			setGraph(graph);
 
-			//After setting this parameter, the nodes can be connected
+			//The nodes can be connected
 			graph.setConnectable(true);
 
 			//Turn on pan
@@ -53,11 +58,10 @@ function App(props) {
 			//Open range selection
 			new mxRubberband(graph);
 
-			// setStylesheet mxStylesheet
+			// setStylesheet
 			setStylesheet(graph);
 
-			//Set anchor point
-			// Overridden to define per-shape connection points
+			//Set anchor point - Overridden to define per-shape connection points
 			setAnchors(mxGraph, mxShape);
 
 			//Some functions of Overridden mxGraph
@@ -69,29 +73,20 @@ function App(props) {
       		//Settings toolbar
 			setCallToolbar("setToolbar");
 
+			setCallModalForm("setModalForm");
 
-
-
-
+			// var attrTriger = document.getElementById('attrTriger');
+			// attrTriger.click();
 
 		}
 	}, [graph]);
 
 	return (
 		<div id="main">
-			{/* <React.Fragment> */}
-			{/* <td>  */}
-		  		<ObjSelect id="objectSelector" graph={graph} parentCall={callObjSelect}/>
-
-
-			{/* </td> */}
-			{/* </React.Fragment> */}
-     	
-      <Toolbar id="toolbar" graph={graph} parentCall={callToolbar}/>
-      <MainCanvas id="canvas" setGraph={setGraph} />
-	  
-	 
-	  
+		  		<ObjSelect id="objectSelector" graph={graph} valid={validated} setValid={setValidated} parentCall={callObjSelect}/>
+      			<Toolbar id="toolbar" graph={graph} parentCall={callToolbar}/>
+      			<MainCanvas id="canvas" setGraph={setGraph} />
+				<ModalForm id="modalForm" graph={graph} valid={validated} setValid={setValidated} parentCall={callModalForm} />
 		</div>
 
 
