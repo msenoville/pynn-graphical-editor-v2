@@ -10,7 +10,6 @@ export default function setModalForm(graph, setSelected) {
 
 function selectionChanged(graph, setSelected) {
     var cell = graph.getSelectionCell();
-    console.log(cell)
 
     if (cell === undefined) {
         setSelected(null);
