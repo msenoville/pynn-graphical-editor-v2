@@ -15,6 +15,7 @@ import "./css/images.css";
 import "./css/common.css";
 
 import TextFieldSizes from "./webpages/TextFieldSizes"
+import Population from "./webpages/Population";
 
 function App(props) {
 	// mxGraph object
@@ -64,7 +65,7 @@ function App(props) {
 	return (
 		<div id="main">
 
-	  <TextFieldSizes />
+	  <Population />
 		</div>
 	);
 }
