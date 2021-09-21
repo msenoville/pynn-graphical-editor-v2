@@ -440,7 +440,7 @@ const ModalForm = (props) => {
       </Button>
       <Button variant="contained">Cancel</Button></div></React.Fragment>} */}
               
-                <Button onClick={handleCloseModal} color="primary" variant="contained">
+                <Button onClick={handleCloseModal} color="secondary" variant="contained">
                   Cancel
                 </Button>
                 <Button onClick={handleCloseModal} color="primary" variant="contained">
