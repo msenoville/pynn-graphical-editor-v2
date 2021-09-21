@@ -15,7 +15,7 @@ import "./css/images.css";
 import "./css/common.css";
 
 import TextFieldSizes from "./webpages/TextFieldSizes"
-import Population from "./webpages/Population";
+import FormScriptGenerator from "./webpages/FormScriptGenerator";
 
 function App(props) {
 	// mxGraph object
@@ -65,7 +65,7 @@ function App(props) {
 	return (
 		<div id="main">
 
-	  <Population />
+	  <FormScriptGenerator />
 		</div>
 	);
 }
