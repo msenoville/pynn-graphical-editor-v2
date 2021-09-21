@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
 const ModalForm = (props) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-  const [valuesimulator, setSimulator] = React.useState('');
+  const [celltype, setCellType] = React.useState('');
   const [name, setName] = React.useState('');
   const [size, setSize] = React.useState('');
   const [rate, setRate] = React.useState('');
@@ -84,7 +84,7 @@ const ModalForm = (props) => {
    };
 
   const handleChangeSimulator = (event) => {
-    setSimulator(event.target.value);
+    setCellType(event.target.value);
   };
   const handleChangeName = (event) => {
     setName(event.target.value);
@@ -148,15 +148,15 @@ const ModalForm = (props) => {
   const error = [spikes, v].filter((v) => v).length !== 2;
 	const [selected, setSelected] = useState(null);
 	const [attr, setAttr] = useState(null);
-    const [open, setOpen] = React.useState(props.valid);
+    const [openModal, setOpenModal] = React.useState(props.valid);
 
     // maybe not useful anymore
     const handleClickOpen = () => {
-        setOpen(true);
+        setOpenModal(true);
       };
     
-    const handleClose = () => {
-        setOpen(false);
+    const handleCloseModal = () => {
+        setOpenModal(false);
         props.setValid(false)
       };
 
@@ -179,7 +179,7 @@ const ModalForm = (props) => {
 
     useEffect(() => {
 		if (props.valid == true) {
-			setOpen(true);
+			setOpenModal(true);
 		}
 	}, [props.valid]);
 
@@ -193,8 +193,8 @@ const ModalForm = (props) => {
 	} else {
 		return (
       <form className={classes.root} noValidate autoComplete="off">
-        <div>
-            <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+        {/* <div>
+            <Dialog open={openModal} onClose={handleCloseModal} aria-labelledby="form-dialog-title">
               <DialogTitle id="form-dialog-title">Modal Form</DialogTitle>
               <DialogContent>
                 <DialogContentText>
@@ -218,8 +218,16 @@ const ModalForm = (props) => {
                 </Button>
               </DialogActions>
             </Dialog>
-          </div>
+          </div> */}
       <div>
+      <Dialog open={openModal} onClose={handleCloseModal} aria-labelledby="form-dialog-title">
+              <DialogTitle id="form-dialog-title">Population Modal Form</DialogTitle>
+              <DialogContent>
+                <DialogContentText>
+                  This is a prototype for setting Population().
+                </DialogContentText>
+                <div>
+
       <TextField
           label="Name"
           id="outlined-size-normal"
@@ -240,14 +248,14 @@ const ModalForm = (props) => {
       </div>
       <div>
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-controlled-open-select-label">Simulator</InputLabel>
+        <InputLabel id="demo-controlled-open-select-label">Cell Type</InputLabel>
         <Select
           labelId="demo-controlled-open-select-label"
           id="demo-controlled-open-select"
           open={open}
           onClose={handleClose}
           onOpen={handleOpen}
-          value={valuesimulator}
+          value={celltype}
           onChange={handleChangeSimulator}
         >
         <MenuItem value="None">
@@ -259,7 +267,8 @@ const ModalForm = (props) => {
         </Select>
       </FormControl>
       </div>
-      {valuesimulator=="SpikeSourcePoisson" &&   <React.Fragment><div>
+
+      {celltype=="SpikeSourcePoisson" &&   <React.Fragment><div>
       <FormLabel component="legend" className={classes.formControl}>Parameters</FormLabel>
       <TextField
           label="Rate"
@@ -314,9 +323,9 @@ const ModalForm = (props) => {
             label="v"
           />
          </FormGroup></FormControl>
-         <p>simulator : {valuesimulator}</p>
+         <p>Cell Type : {celltype}</p>
         </div></React.Fragment>}
-        {valuesimulator=="IF-curr-exp" && <React.Fragment>
+        {celltype=="IF-curr-exp" && <React.Fragment>
         <div>
       <FormLabel component="legend" className={classes.formControl}>Parameters</FormLabel>
       <TextField
@@ -414,10 +423,12 @@ const ModalForm = (props) => {
             label="v"
           />
          </FormGroup></FormControl>
-         <p>simulator : {valuesimulator}</p>
+         <p>Cell Type : {celltype}</p>
         </div>
 </React.Fragment>}
-{((rate !=="") && (start !=='') && (duration !=='') && (name !=='') && (size !=='') ) ?
+    </DialogContent>
+    <DialogActions>
+{/* {((rate !=="") && (start !=='') && (duration !=='') && (name !=='') && (size !=='') ) ?
 <React.Fragment>
    <div><Button variant="contained" color="primary" >
         Confirm
@@ -427,7 +438,17 @@ const ModalForm = (props) => {
         <div><Button variant="contained" color="primary" >
         Confirm
       </Button>
-      <Button variant="contained">Cancel</Button></div></React.Fragment>}
+      <Button variant="contained">Cancel</Button></div></React.Fragment>} */}
+              
+                <Button onClick={handleCloseModal} color="primary" variant="contained">
+                  Cancel
+                </Button>
+                <Button onClick={handleCloseModal} color="primary" variant="contained">
+                  Confirm
+                </Button>
+              </DialogActions>
+            </Dialog>
+      </div>
     </form>
     
   );
