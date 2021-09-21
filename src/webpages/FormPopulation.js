@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
       width: 42,
     },
 }));
-export default function Population() {
+export default function FormPopulation() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [valuesimulator, setSimulator] = React.useState('');

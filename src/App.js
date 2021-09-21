@@ -14,7 +14,7 @@ import "./css/main.css";
 import "./css/images.css";
 import "./css/common.css";
 
-import Population from "./webpages/Population"
+import FormPopulation from "./webpages/FormPopulation"
 import FormScriptGenerator from "./webpages/FormScriptGenerator";
 
 function App(props) {
