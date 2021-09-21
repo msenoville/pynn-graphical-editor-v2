@@ -9,14 +9,9 @@ import Button from '@material-ui/core/Button';
 import FormLabel from '@material-ui/core/FormLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
-import { FormatLineSpacing } from '@material-ui/icons';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
-import Input from '@material-ui/core/Input';
-import VolumeUp from '@material-ui/icons/VolumeUp';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
@@ -45,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
       width: 42,
     },
 }));
-export default function TextFieldSizes() {
+export default function Population() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [valuesimulator, setSimulator] = React.useState('');
