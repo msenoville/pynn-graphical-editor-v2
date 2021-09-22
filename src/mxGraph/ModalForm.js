@@ -148,7 +148,7 @@ const ModalForm = (props) => {
   const error = [spikes, v].filter((v) => v).length !== 2;
 	const [selected, setSelected] = useState(null);
 	const [attr, setAttr] = useState(null);
-    const [openModal, setOpenModal] = React.useState(props.valid);
+  const [openModal, setOpenModal] = React.useState(props.valid);
 
     // maybe not useful anymore
     const handleClickOpen = () => {
@@ -157,7 +157,8 @@ const ModalForm = (props) => {
     
     const handleCloseModal = () => {
         setOpenModal(false);
-        props.setValid(false)
+        props.setValid(false);
+        props.setCellType(null);
       };
 
 	// Handle parent call
@@ -184,7 +185,7 @@ const ModalForm = (props) => {
 	}, [props.valid]);
 
 	// Render
-	if (selected === null || attr === null || attr.MXtype === undefined) {
+	if (selected === null || attr === null || attr.MXtype === undefined || props.type === null || props.type === 'Projection') {
 		return (
 			<div id={props.id}>
 			</div>

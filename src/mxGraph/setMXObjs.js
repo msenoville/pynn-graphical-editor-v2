@@ -5,10 +5,10 @@ import ModalTest from "./ModalTest";
 // import ControlledPopup from "./ControlledPopup"
 import React, { useState } from 'react';
 
-const setMXObjs = (graph, objLists, valid, setValid) => {
+const setMXObjs = (graph, objLists, valid, setValid, celltype, setCellType) => {
 	var idx = 0;
 
-	const setObj = function (MXObjImgClass, width, height, value, valid, setValid) {
+	const setObj = function (MXObjImgClass, width, height, value, valid, setValid, celltype, setCellType) {
 
 		//Determine whether the Drop is valid
 		const dropGraph = function (evt) {
@@ -26,9 +26,15 @@ const setMXObjs = (graph, objLists, valid, setValid) => {
 		};
 
 		//Defines the popup menu for cells 
-		const createPopupMenu = function (graph, menu, cell, evt, valid, setValid) {
+		const createPopupMenu = function (graph, menu, cell, evt, valid, setValid, celltype, setCellType) {
 			if (cell) {
 			  if (cell.edge === true) {
+				menu.addItem("Edit Projection", null, function() {
+					// mxUtils.alert('Edit child node: ');
+					// selectionChanged(graph)
+					setValid(true);
+					// setCellType('Projection');
+				});
 				menu.addItem("Delete Projection", null, function() {
 				  graph.removeCells([cell]);
 				  mxEvent.consume(evt);
@@ -37,7 +43,9 @@ const setMXObjs = (graph, objLists, valid, setValid) => {
 				menu.addItem("Edit Population", null, function() {
 				  // mxUtils.alert('Edit child node: ');
 				  // selectionChanged(graph)
-				  setValid(true)
+				  setValid(true);
+				//   setCellType('Population');
+
 				});
 				menu.addItem("Delete Population", null, function() {
 				  graph.removeCells([cell]);
@@ -82,8 +90,8 @@ const setMXObjs = (graph, objLists, valid, setValid) => {
 		ds.createDragElement = mxDragSource.prototype.createDragElement;
 
 		// Creates the popup menu
-		graph.popupMenuHandler.factoryMethod = function(menu, cell, evt, valid) {
-			createPopupMenu(graph, menu, cell, evt, valid, setValid);
+		graph.popupMenuHandler.factoryMethod = function(menu, cell, evt, valid, setValid, celltype, setCellType) {
+			createPopupMenu(graph, menu, cell, evt, valid, setValid, celltype, setCellType);
 		};
 	}
 
@@ -102,7 +110,9 @@ const setMXObjs = (graph, objLists, valid, setValid) => {
 		'opacity': 100
 	},
 	valid,
-	setValid
+	setValid,
+	celltype,
+	setCellType
 	);
 
 }

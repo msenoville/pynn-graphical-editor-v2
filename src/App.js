@@ -6,6 +6,8 @@ import MainCanvas from "./mxGraph/MainCanvas";
 import ObjSelect from "./mxGraph/ObjSelect";
 import Toolbar from "./mxGraph/Toolbar";
 import ModalForm from "./mxGraph/ModalForm";
+import ProjModalForm from "./mxGraph/ProjModalForm";
+
 
 
 import setStylesheet from "./mxGraph/setStylesheet";
@@ -35,8 +37,9 @@ function App(props) {
 	const [callToolbar, setCallToolbar] = useState(null);
 	const [callModalForm, setCallModalForm] = useState(null);
 
-	const [validated, setValidated] = useState(false)
-
+	const [callProjModalForm, setCallProjModalForm] = useState(null);
+	const [validated, setValidated] = useState(false);
+	const [celltype, setCellType] = useState(null);
 
 	//Called when the graph changes
 	useEffect(() => {
@@ -74,6 +77,7 @@ function App(props) {
 			setCallToolbar("setToolbar");
 
 			setCallModalForm("setModalForm");
+			setCallProjModalForm("setProjModalForm");
 
 			// var attrTriger = document.getElementById('attrTriger');
 			// attrTriger.click();
@@ -83,10 +87,20 @@ function App(props) {
 
 	return (
 		<div id="main">
-		  		<ObjSelect id="objectSelector" graph={graph} valid={validated} setValid={setValidated} parentCall={callObjSelect}/>
+		  		<ObjSelect id="objectSelector" 	graph={graph} 
+				  								valid={validated} setValid={setValidated} 
+												celltype={celltype} setCellType={setCellType}
+				  								parentCall={callObjSelect}/>
       			<Toolbar id="toolbar" graph={graph} parentCall={callToolbar}/>
       			<MainCanvas id="canvas" setGraph={setGraph} />
-				<ModalForm id="modalForm" graph={graph} valid={validated} setValid={setValidated} parentCall={callModalForm} />
+				<ModalForm id="modalFormPop" 	graph={graph} 
+											valid={validated} setValid={setValidated} 
+											celltype={celltype} setCellType={setCellType}
+											parentCall={callModalForm} />
+				{/* <ProjModalForm id="modalFormProj" graph={graph} 
+											valid={validated} setValid={setValidated} 
+											celltype={celltype} setCellType={setCellType}
+											parentCall={callProjModalForm} /> */}
 		</div>
 
 
