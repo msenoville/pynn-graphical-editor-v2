@@ -83,6 +83,7 @@ function App(props) {
 	}, [graph]);
 
 	return (
+		
 		<div id="main">
 		  		<ObjSelect id="objectSelector" 	graph={graph} 
 				  								valid={validated} setValid={setValidated} 
