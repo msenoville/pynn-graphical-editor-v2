@@ -75,9 +75,6 @@ function App(props) {
 
 			setCallModalForm("setModalForm");
 
-			// var attrTriger = document.getElementById('attrTriger');
-			// attrTriger.click();
-
 		}
 	}, [graph]);
 

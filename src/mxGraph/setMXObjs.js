@@ -1,5 +1,5 @@
-import { mxUtils, mxEvent, mxCell, mxGeometry, mxDragSource, mxPopupMenu, mxHandle } from "mxgraph-js";
-import Popup from 'reactjs-popup';
+import { mxUtils, mxEvent, mxGeometry, mxDragSource, mxCell, mxPopupMenu, mxHandle } from "mxgraph-js";
+import Popup from 'reactjs-popup'; 
 import 'reactjs-popup/dist/index.css';
 import ModalTest from "./ModalTest";
 // import ControlledPopup from "./ControlledPopup"
@@ -8,7 +8,7 @@ import React, { useState } from 'react';
 const setMXObjs = (graph, objLists, valid, setValid) => {
 	var idx = 0;
 
-	const setObj = function (MXObjImgClass, width, height, value, valid, setValid) {
+	const setObj = function (MXObjClass, width, height, value, valid, setValid) {
 
 		//Determine whether the Drop is valid
 		const dropGraph = function (evt) {
@@ -52,7 +52,7 @@ const setMXObjs = (graph, objLists, valid, setValid) => {
 		var li = document.createElement("li");
 		var img = document.createElement("div");
 		img.classList.add("MXObj");
-		img.classList.add(MXObjImgClass);
+		img.classList.add(MXObjClass);
 
 		li.id = "MXObj_" + idx;
 		idx += 1;
@@ -61,8 +61,8 @@ const setMXObjs = (graph, objLists, valid, setValid) => {
 
 		//Creates a new vertex after the drop is successful
 		const dropSuccessCb = function (graph, evt, target, x, y) {
-			value.MXtype = MXObjImgClass;
-			const cell = new mxCell(value, new mxGeometry(0, 0, width, height), MXObjImgClass);
+			value.MXtype = MXObjClass;
+			const cell = new mxCell(value, new mxGeometry(0, 0, width, height), MXObjClass, 'test');
 			cell.vertex = true;
 			const cells = graph.importCells([cell], x, y, target);
 			if (cells != null && cells.length > 0) {
@@ -99,7 +99,25 @@ const setMXObjs = (graph, objLists, valid, setValid) => {
 		'fillcolor': '#FFFFFF',
 		'strokecolor': '#000000',
 		'strokewidth': 1,
-		'opacity': 100
+		'opacity': 100,
+
+		'celltype': '',
+		'name': '',
+		'rate': '',
+		'start': '',
+		'duration': '',
+		'Vrest': '',
+		'cm': 1,
+		'vthresh': -50,
+		'taurefrac': 0,
+		'tausynE': 5,
+		'tausynI': 5,
+		'IOffset': 0,
+		'taum': 20,
+		'vreset': -65,
+		'V': '',
+		'tausynI': '',
+		'Vrest': -65
 	},
 	valid,
 	setValid
