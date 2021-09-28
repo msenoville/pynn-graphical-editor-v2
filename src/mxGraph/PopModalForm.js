@@ -494,17 +494,17 @@ const PopModalForm = (props) => {
 </React.Fragment>}
     </DialogContent>
     <DialogActions>
-{/* {((rate !=="") && (start !=='') && (duration !=='') && (name !=='') && (size !=='') ) ?
-<React.Fragment>
-   <div><Button variant="contained" color="primary" >
-        Confirm
-      </Button>
-      <Button variant="contained">Cancel</Button></div></React.Fragment> :
-      <React.Fragment>
-        <div><Button variant="contained" color="primary" >
-        Confirm
-      </Button>
-      <Button variant="contained">Cancel</Button></div></React.Fragment>} */}
+            {/* {((rate !=="") && (start !=='') && (duration !=='') && (name !=='') && (size !=='') ) ?
+            <React.Fragment>
+            <div><Button variant="contained" color="primary" >
+                    Confirm
+                </Button>
+                <Button variant="contained">Cancel</Button></div></React.Fragment> :
+                <React.Fragment>
+                    <div><Button variant="contained" color="primary" >
+                    Confirm
+                </Button>
+                <Button variant="contained">Cancel</Button></div></React.Fragment>} */}
               
                 <Button onClick={handleCloseModal} color="primary" variant="contained">
                   Cancel
