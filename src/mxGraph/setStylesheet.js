@@ -12,7 +12,6 @@ export default function setStylesheet(graph) {
         graph.getStylesheet().putCellStyle('rectangle', style);
     }
 
-    // Verteice
     setRectangle();
 
 }

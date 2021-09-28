@@ -42,7 +42,7 @@ label {
     background: url('../images/grid.gif');
     cursor: default;
 }
-/* #attributeEditor {
+#modal-form {
     position: absolute;
     float: left;
     overflow: hidden;
@@ -51,7 +51,7 @@ label {
     right: 0%;
     background-color: #eeeeee;
     cursor: default;   
-} */
+}
 #objectSelector {
     position: relative;
     overflow: hidden;
@@ -77,3 +77,5 @@ label {
 .attrblock{
     display: block;
 }
+
+/* try */

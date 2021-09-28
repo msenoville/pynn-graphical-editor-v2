@@ -30,6 +30,7 @@ class MainCanvas extends React.Component {
 			//Set the graph of the upper layer to inform that it is in the initialization phase
 			graph.init = true;
 			this.props.setGraph(graph);
+			
 		}
 	}
 

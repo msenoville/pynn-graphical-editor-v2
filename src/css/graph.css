@@ -84,83 +84,9 @@ td.mxWindowPane button {
   	padding: 2px;
 	float: left;
 }
-img.mxToolbarItem {
-	margin-right: 6px;
-	margin-bottom: 6px;
-	border-width: 1px;
-}
-select.mxToolbarCombo {
-	vertical-align: top;
-	border-style: inset;
-	border-width: 2px;
-}
-div.mxToolbarComboContainer {
-	padding: 2px;
-}
-img.mxToolbarMode {
-	margin: 2px;
-	margin-right: 4px;
-	margin-bottom: 4px;
-	border-width: 0px;
-}
-img.mxToolbarModeSelected {
-	margin: 0px;
-	margin-right: 2px;
-	margin-bottom: 2px;
-	border-width: 2px;
-	border-style: inset;
-}
-div.mxTooltip {
-	-webkit-box-shadow: 3px 3px 12px #C0C0C0;
-	-moz-box-shadow: 3px 3px 12px #C0C0C0;
-	box-shadow: 3px 3px 12px #C0C0C0;
-	background: #FFFFCC;
-	border-style: solid;
-	border-width: 1px;
-	border-color: black;
-	font-family: Arial;
-	font-size: 8pt;
-	position: absolute;
-	cursor: default;
-	padding: 4px;
-	color: black;
-}
-div.mxPopupMenu {
-	-webkit-box-shadow: 3px 3px 12px #C0C0C0;
-	-moz-box-shadow: 3px 3px 12px #C0C0C0;
-	box-shadow: 3px 3px 12px #C0C0C0;
-	background: url(data:image/gif;base64,R0lGODlhGgAUAIAAAOzs7PDw8CH5BAAAAAAALAAAAAAaABQAAAIijI+py70Ao5y02lud3lzhD4ZUR5aPiKajyZbqq7YyB9dhAQA7);
-	_background: url('../images/window.gif');
-	position: absolute;
-	border-style: solid;
-	border-width: 1px;
-	border-color: black;
-}
-table.mxPopupMenu {
-	border-collapse: collapse;
-	margin-top: 1px;
-	margin-bottom: 1px;
-}
-tr.mxPopupMenuItem {
-	color: black;
-	cursor: pointer;
-}
-tr.mxPopupMenuItemHover {
-	background-color: #000066;
-	color: #FFFFFF;
-	cursor: pointer;
-}
-td.mxPopupMenuItem {
-	padding: 2px 30px 2px 10px;
-	white-space: nowrap;
-	font-family: Arial;
-	font-size: 8pt;
-}
-td.mxPopupMenuIcon {
-	background-color: #D0D0D0;
-	padding: 2px 4px 2px 4px;
-}
 .mxDisabled {
 	opacity: 0.2 !important;
 	cursor:default !important;
 }
+
+
