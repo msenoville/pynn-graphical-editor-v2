@@ -79,9 +79,6 @@ function App(props) {
 			setCallModalForm("setModalForm");
 			setCallProjModalForm("setProjModalForm");
 
-			// var attrTriger = document.getElementById('attrTriger');
-			// attrTriger.click();
-
 		}
 	}, [graph]);
 
@@ -89,13 +86,13 @@ function App(props) {
 		<div id="main">
 		  		<ObjSelect id="objectSelector" 	graph={graph} 
 				  								valid={validated} setValid={setValidated} 
-												celltype={celltype} setCellType={setCellType}
+												// celltype={celltype} setCellType={setCellType}
 				  								parentCall={callObjSelect}/>
       			<Toolbar id="toolbar" graph={graph} parentCall={callToolbar}/>
       			<MainCanvas id="canvas" setGraph={setGraph} />
 				<ModalForm id="modalFormPop" 	graph={graph} 
 											valid={validated} setValid={setValidated} 
-											celltype={celltype} setCellType={setCellType}
+											// celltype={celltype} setCellType={setCellType}
 											parentCall={callModalForm} />
 				{/* <ProjModalForm id="modalFormProj" graph={graph} 
 											valid={validated} setValid={setValidated} 

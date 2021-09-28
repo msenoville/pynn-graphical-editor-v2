@@ -6,6 +6,7 @@ export default function setModalForm(graph, setSelected) {
     });
 
     selectionChanged(graph, setSelected);
+
 }
 
 function selectionChanged(graph, setSelected) {
