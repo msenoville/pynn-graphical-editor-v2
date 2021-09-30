@@ -59,9 +59,9 @@ const PopModalForm = (props) => {
   const [celltype, setCellType] = React.useState('');
   const [name, setName] = React.useState('');
   const [size, setSize] = React.useState('');
-  const [rate, setRate] = React.useState('');
-  const [start, setStart] = React.useState('');
-  const [duration, setDuration] = React.useState('');
+  const [rate, setRate] = React.useState(0);
+  const [start, setStart] = React.useState(0);
+  const [duration, setDuration] = React.useState(0);
   const [Vrest, setVrest] = React.useState('');
   const [cm, setCm] = React.useState('');
   const [vthresh, setVThresh] = React.useState('');
@@ -341,7 +341,7 @@ const PopModalForm = (props) => {
           id="outlined-size-normal"
           defaultValue=""
           variant="outlined"
-          value={props.attr.rate}
+          value={rate}
           onChange={handleChangeRate}
         />
         <div><Slider
@@ -355,7 +355,7 @@ const PopModalForm = (props) => {
           id="outlined-size-normal"
           defaultValue=""
           variant="outlined"
-          value={props.attr.start}
+          value={start}
           onChange={handleChangeStart}
         /><Slider
         value={typeof start === 'number' ? start : 0}
@@ -368,7 +368,7 @@ const PopModalForm = (props) => {
           id="outlined-size-normal"
           defaultValue=""
           variant="outlined"
-          value={props.attr.duration}
+          value={duration}
           onChange={handleChangeDuration}
         /><Slider
         value={typeof duration === 'number' ? duration : 0}
