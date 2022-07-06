@@ -6,10 +6,7 @@ import MainCanvas from "./mxGraph/MainCanvas";
 import ObjSelect from "./mxGraph/ObjSelect";
 import Toolbar from "./mxGraph/Toolbar";
 import ModalForm from "./mxGraph/ModalForm";
-import ProjModalForm from "./mxGraph/ProjModalForm";
-
-
-
+// import ProjModalForm from "./mxGraph/ProjModalForm";
 import setStylesheet from "./mxGraph/setStylesheet";
 import setAnchors from "./mxGraph/setAnchors";
 import setDefault from "./mxGraph/setDefault";
@@ -97,11 +94,9 @@ function App(props) {
 											parentCall={callModalForm} />
 				{/* <ProjModalForm id="modalFormProj" graph={graph} 
 											valid={validated} setValid={setValidated} 
-											celltype={celltype} setCellType={setCellType}
+											//celltype={celltype} setCellType={setCellType}
 											parentCall={callProjModalForm} /> */}
 		</div>
-
-
 	);
 
 

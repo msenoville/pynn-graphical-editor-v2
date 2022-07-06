@@ -228,7 +228,7 @@ const PopModalForm = (props) => {
   };
   const { spikes, v } = state;
   const error = [spikes, v].filter((v) => v).length !== 2;
-    const [openModal, setOpenModal] = React.useState(props.valid);
+  const [openModal, setOpenModal] = React.useState(props.valid);
 
     // setset()
 

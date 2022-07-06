@@ -8,6 +8,9 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import setModalForm from "./setModalForm";
 import PopModalForm from "./PopModalForm";
+
+import ProjModalForm from "./ProjModalForm";
+
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -51,7 +54,12 @@ const ModalForm = (props) => {
 	// Render
 	if (selected === null || attr === null || attr.MXtype === undefined || props.type === null || props.type === 'Projection') {
 		return (
-			<div id={props.id}>
+			<div> 
+				id={props.id}
+				<ProjModalForm attr={attr} setAttr={setAttr} 
+                        // selected={selected}  setSelected={setSelected}
+                        // valid={props.valid}  setValid={props.setValid}
+                        graph={props.graph} />
 			</div>
 
 		);
@@ -62,7 +70,7 @@ const ModalForm = (props) => {
                         selected={selected}  setSelected={setSelected}
                         valid={props.valid}  setValid={props.setValid}
                         graph={props.graph} />
-      </div>
+      </div>	  
   );
 }
 }

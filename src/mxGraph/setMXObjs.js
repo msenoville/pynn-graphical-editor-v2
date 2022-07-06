@@ -33,6 +33,13 @@ const setMXObjs = (graph, objLists, valid, setValid) => {
 				  graph.removeCells([cell]);
 				  mxEvent.consume(evt);
 				});
+
+				// Creates a menu entry to edit a Projection
+				menu.addItem("Edit Projection", null, function() {
+					// graph.removeCells([cell]);
+					// mxEvent.consume(evt);
+					setValid(true)
+				  });
 			  } else {
 				menu.addItem("Edit Population", null, function() {
 				  // mxUtils.alert('Edit child node: ');
@@ -71,7 +78,7 @@ const setMXObjs = (graph, objLists, valid, setValid) => {
 			// graph.popupMenuHandler.factoryMethod = createPopupMenu(graph, menu, cell, evt);
 		};
 
-		// Creates the element that is being for the actual preview.
+		// Creates the element that is being usedfor the actual preview.
 		var dragElt = document.createElement("div");
 		dragElt.style.border = "dashed black 1px";
 		dragElt.style.width = width + "px";
