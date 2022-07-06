@@ -52,7 +52,7 @@ export const ProjModalForm = () => {
           <Dialog open={open} fullWidth onClose={closeModel}>
               <StyledDialogTitle>
                   <FlexContainer>
-                      <Typography variant="h6">Model Example</Typography>
+                      <Typography variant="h6">Edit Projection</Typography>
                       <IconButton onClick={closeModel}>
                           <CloseIcon />
                       </IconButton>
