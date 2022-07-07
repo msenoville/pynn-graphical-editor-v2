@@ -10,7 +10,7 @@ export default function ObjSelect(props) {
 	useEffect(() => {
 		if (props.parentCall !== null) {
 			if (props.parentCall.toLowerCase() === "setmxobjs") {
-				SetMXObjs(props.graph, objLists, props.valid, props.setValid);
+				SetMXObjs(props.graph, objLists, props.valid, props.setValid, props.setValidProj, props.valid);
 				console.log('log from useEffect in ObjSelect', props.valid)
 			}
 		}

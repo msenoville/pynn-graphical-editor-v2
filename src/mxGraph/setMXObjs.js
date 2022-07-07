@@ -5,10 +5,10 @@ import ModalTest from "./ModalTest";
 // import ControlledPopup from "./ControlledPopup"
 import React, { useState } from 'react';
 
-const setMXObjs = (graph, objLists, valid, setValid) => {
+const setMXObjs = (graph, objLists, setValid, setValidProj) => {
 	var idx = 0;
 
-	const setObj = function (MXObjClass, width, height, value, valid, setValid) {
+	const setObj = function (MXObjClass, width, height, value, setValid, setValidProj) {
 
 		//Determine whether the Drop is valid
 		const dropGraph = function (evt) {
@@ -36,9 +36,8 @@ const setMXObjs = (graph, objLists, valid, setValid) => {
 
 				// Creates a menu entry to edit a Projection
 				menu.addItem("Edit Projection", null, function() {
-					// graph.removeCells([cell]);
-					// mxEvent.consume(evt);
-					setValid(true)
+
+					setValidProj(true)
 				  });
 			  } else {
 				menu.addItem("Edit Population", null, function() {
@@ -125,9 +124,10 @@ const setMXObjs = (graph, objLists, valid, setValid) => {
 		'V': '',
 		'tausynI': '',
 		'Vrest': -65
-	},
-	valid,
-	setValid
+	}
+	// ,
+	// valid,
+	// setValid
 	);
 
 }

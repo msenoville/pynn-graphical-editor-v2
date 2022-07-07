@@ -74,7 +74,7 @@ function App(props) {
 			setCallToolbar("setToolbar");
 
 			setCallModalForm("setModalForm");
-			setCallProjModalForm("setProjModalForm");
+			// setCallProjModalForm("setProjModalForm");
 
 		}
 	}, [graph]);

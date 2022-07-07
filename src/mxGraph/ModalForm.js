@@ -66,10 +66,10 @@ const ModalForm = (props) => {
 	} else {
 		return (
       <div id={props.id}>
-          <PopModalForm attr={attr} setAttr={setAttr} 
+          {/* <PopModalForm attr={attr} setAttr={setAttr} 
                         selected={selected}  setSelected={setSelected}
                         valid={props.valid}  setValid={props.setValid}
-                        graph={props.graph} />
+                        graph={props.graph} /> */}
       </div>	  
   );
 }
