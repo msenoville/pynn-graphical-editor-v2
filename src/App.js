@@ -5,6 +5,7 @@ import { mxGraph, mxRubberband, mxShape, mxConnectionHandler, mxGraphModel, mxGe
 import MainCanvas from "./mxGraph/MainCanvas";
 import ObjSelect from "./mxGraph/ObjSelect";
 import Toolbar from "./mxGraph/Toolbar";
+import TopToolbar from "./mxGraph/TopToolbar";
 import ModalForm from "./mxGraph/ModalForm";
 // import ProjModalForm from "./mxGraph/ProjModalForm";
 import setStylesheet from "./mxGraph/setStylesheet";
@@ -32,6 +33,7 @@ function App(props) {
 	const [graph, setGraph] = useState(null);
 	const [callObjSelect, setCallObjSelect] = useState(null);
 	const [callToolbar, setCallToolbar] = useState(null);
+	const [callTopToolbar, setCallTopToolbar] = useState(null);
 	const [callModalForm, setCallModalForm] = useState(null);
 
 	const [callProjModalForm, setCallProjModalForm] = useState(null);
@@ -73,6 +75,9 @@ function App(props) {
       		//Settings toolbar
 			setCallToolbar("setToolbar");
 
+			//Settings toolbar
+			setCallTopToolbar("setTopToolbar");
+
 			setCallModalForm("setModalForm");
 			// setCallProjModalForm("setProjModalForm");
 
@@ -82,11 +87,12 @@ function App(props) {
 	return (
 		
 		<div id="main">
-		  		<ObjSelect id="objectSelector" 	graph={graph} 
+		  		{/* <ObjSelect id="objectSelector" 	graph={graph} 
 				  								valid={validated} setValid={setValidated} 
 												// celltype={celltype} setCellType={setCellType}
-				  								parentCall={callObjSelect}/>
-      			<Toolbar id="toolbar" graph={graph} parentCall={callToolbar}/>
+				  								parentCall={callObjSelect}/> */}
+      			{/* <Toolbar id="toolbar" graph={graph} parentCall={callToolbar}/> */}
+				<TopToolbar id="toptoolbar" graph={graph} parentCall={callTopToolbar}/>
       			<MainCanvas id="canvas" setGraph={setGraph} />
 				<ModalForm id="modalFormPop" 	graph={graph} 
 											valid={validated} setValid={setValidated} 

@@ -5,9 +5,9 @@ import 'js-file-download';
 const setToolbar = (graph, setBtns) => {
 	// Adds zoom buttons in top, left corner
 	var btnsObj = [];
-	const addButton = function (imgClass, funct) {
+	const addButton = function (btnClass, funct) {
 		var btnObj = {};
-		btnObj['class'] = imgClass;
+		btnObj['class'] = btnClass;
 		btnObj['clickEvt'] = funct;
 		btnsObj.push(btnObj);
 	}

@@ -56,10 +56,10 @@ const ModalForm = (props) => {
 		return (
 			<div> 
 				id={props.id}
-				<ProjModalForm attr={attr} setAttr={setAttr} 
+				{/* <ProjModalForm attr={attr} setAttr={setAttr} 
                         // selected={selected}  setSelected={setSelected}
                         // valid={props.valid}  setValid={props.setValid}
-                        graph={props.graph} />
+                        graph={props.graph} /> */}
 			</div>
 
 		);
