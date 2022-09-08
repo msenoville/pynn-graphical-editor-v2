@@ -97,7 +97,7 @@ const setMXObjs = (graph, objLists, setValid, setValidProj) => {
 	// We can add more shapes...  
 	setObj('rectangle', 120, 80, {
 		// Font
-		'text': '',
+		'text': 'POP',
 		'fontsize': 12,
 		'fontcolor': '#000000',
 

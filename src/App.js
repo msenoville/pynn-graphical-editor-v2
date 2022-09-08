@@ -37,7 +37,7 @@ function App(props) {
 	const [callModalForm, setCallModalForm] = useState(null);
 
 	const [callProjModalForm, setCallProjModalForm] = useState(null);
-	const [validated, setValidated] = useState(false);
+	const [MXValidated, setMXValidated] = useState(false);
 	const [celltype, setCellType] = useState(null);
 
 	//Called when the graph changes
@@ -69,7 +69,7 @@ function App(props) {
 			//Some functions of Overridden mxGraph
 			setDefault(graph, mxConnectionHandler);
 
-			//Set mxGraph Object to pull into graph
+			// //Set mxGraph Object to pull into graph
 			setCallObjSelect("setMXObjs");
 
       		//Settings toolbar
@@ -87,15 +87,19 @@ function App(props) {
 	return (
 		
 		<div id="main">
-		  		<ObjSelect id="objectSelector" 	graph={graph} 
-				  								valid={validated} setValid={setValidated} 
+		  		{/* <ObjSelect id="objectSelector" 	graph={graph} 
+				  								MXValid={MXValidated} setValid={setMXValidated} 
 												// celltype={celltype} setCellType={setCellType}
-				  								parentCall={callObjSelect}/>
+				  								parentCall={callObjSelect}/> */}
       			{/* <Toolbar id="toolbar" graph={graph} parentCall={callToolbar}/> */}
-				<TopToolbar id="toptoolbar" graph={graph} parentCall={callTopToolbar}/>
+				{/* <TopToolbar id="toptoolbar" graph={graph} parentCall={callTopToolbar}/> */}
+				<TopToolbar id="toptoolbar" graph={graph} parentCall={callTopToolbar} parentObjCall={callObjSelect}
+							MXValid={MXValidated} setMXValid={setMXValidated} 
+							// celltype={celltype} setCellType={setCellType}
+							/>
       			<MainCanvas id="canvas" setGraph={setGraph} />
 				<ModalForm id="modalFormPop" 	graph={graph} 
-											valid={validated} setValid={setValidated} 
+											MXValid={MXValidated} setMXValid={setMXValidated} 
 											// celltype={celltype} setCellType={setCellType}
 											parentCall={callModalForm} />
 				{/* <ProjModalForm id="modalFormProj" graph={graph} 
