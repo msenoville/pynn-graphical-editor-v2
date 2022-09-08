@@ -87,10 +87,10 @@ function App(props) {
 	return (
 		
 		<div id="main">
-		  		{/* <ObjSelect id="objectSelector" 	graph={graph} 
+		  		<ObjSelect id="objectSelector" 	graph={graph} 
 				  								valid={validated} setValid={setValidated} 
 												// celltype={celltype} setCellType={setCellType}
-				  								parentCall={callObjSelect}/> */}
+				  								parentCall={callObjSelect}/>
       			{/* <Toolbar id="toolbar" graph={graph} parentCall={callToolbar}/> */}
 				<TopToolbar id="toptoolbar" graph={graph} parentCall={callTopToolbar}/>
       			<MainCanvas id="canvas" setGraph={setGraph} />

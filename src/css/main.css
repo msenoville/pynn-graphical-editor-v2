@@ -33,6 +33,15 @@ label {
     background-color: #f6f6f3;
     cursor: default;
 }
+#toptoolbar {
+    position: static;
+    float: left;
+    overflow: hidden;
+    width: 80%;
+    height: 10%;
+    background-color: #f6f6f3;
+    cursor: default;
+}
 #canvas {
     position: relative;
     float: left;

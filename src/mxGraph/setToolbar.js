@@ -86,11 +86,11 @@ const setToolbar = (graph, setBtns) => {
 		ReadXml();
 	});
 
-	addButton("navigate_plus", function () {
+	addButton("zoom_in", function () {
 		graph.zoomIn();
 	});
 
-	addButton("navigate_minus", function () {
+	addButton("zoom_out", function () {
 		graph.zoomOut();
 	});
 

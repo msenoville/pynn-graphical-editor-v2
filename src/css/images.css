@@ -28,14 +28,14 @@
 }
 
 
-.navigate_plus{
+.zoom_in{
     background-image: url('../images/navigate_plus.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
 }
 
-.navigate_minus {
+.zoom_out {
     background-image: url('../images/navigate_minus.png');
     background-size: cover;
     background-repeat: no-repeat;

@@ -2,7 +2,7 @@ import {  mxUtils, mxCodec } from "mxgraph-js";
 import html2canvas from 'html2canvas';
 import 'js-file-download';
 
-const setToolbar = (graph, setBtns) => {
+const setTopToolbar = (graph, setBtns) => {
 	// Adds zoom buttons in top, left corner
 	var btnsObj = [];
 	const addButton = function (btnClass, funct) {
@@ -86,11 +86,11 @@ const setToolbar = (graph, setBtns) => {
 		ReadXml();
 	});
 
-	addButton("navigate_plus", function () {
+	addButton("zoom_in", function () {
 		graph.zoomIn();
 	});
 
-	addButton("navigate_minus", function () {
+	addButton("zoom_out", function () {
 		graph.zoomOut();
 	});
 
@@ -98,4 +98,4 @@ const setToolbar = (graph, setBtns) => {
 
 }
 
-export default setToolbar;
+export default setTopToolbar;
