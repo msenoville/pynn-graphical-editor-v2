@@ -1,15 +1,20 @@
 import { mxUtils, mxEvent, mxGeometry, mxDragSource, mxCell, mxPopupMenu, mxHandle } from "mxgraph-js";
 import Popup from 'reactjs-popup'; 
 import 'reactjs-popup/dist/index.css';
-import ModalTest from "./ModalTest";
 // import ControlledPopup from "./ControlledPopup"
+import CallHook from "./CallExternalHook"
 import React, { useState } from 'react';
 
-const setMXObjs = (graph, objLists, setValid, setValidProj) => {
+const setMXObjs = (graph, objLists, valid, setValid) => {
 	var idx = 0;
+	var modal = '';
+	// const [val, setVal] = useState(valid);
 
-	const setObj = function (MXObjClass, width, height, value, setValid, setValidProj) {
 
+	console.log('404', valid, setValid)
+	const setObj = function (MXObjClass, width, height, value, valid, setValid) {
+
+		// console.log('405', valid, setValid)
 		//Determine whether the Drop is valid
 		const dropGraph = function (evt) {
 			const x = mxEvent.getClientX(evt);
@@ -27,6 +32,7 @@ const setMXObjs = (graph, objLists, setValid, setValidProj) => {
 
 		//Defines the popup menu for cells 
 		const createPopupMenu = function (graph, menu, cell, evt, valid, setValid) {
+			// console.log('cell', cell)
 			if (cell) {
 			  if (cell.edge === true) {
 				menu.addItem("Delete Projection", null, function() {
@@ -36,14 +42,17 @@ const setMXObjs = (graph, objLists, setValid, setValidProj) => {
 
 				// Creates a menu entry to edit a Projection
 				menu.addItem("Edit Projection", null, function() {
-
-					setValidProj(true)
+					// setValid(true)
 				  });
 			  } else {
 				menu.addItem("Edit Population", null, function() {
+					modal = 'pop-editor'
+					// console.log('inside additem', setValid)
 				  // mxUtils.alert('Edit child node: ');
 				  // selectionChanged(graph)
-				  setValid(true)
+					setValid(true)
+					// setVal(true);
+					// CallHook(valid, setValid)
 				});
 				menu.addItem("Delete Population", null, function() {
 				  graph.removeCells([cell]);
@@ -87,7 +96,11 @@ const setMXObjs = (graph, objLists, setValid, setValidProj) => {
 		// Restores original drag icon while outside of graph
 		ds.createDragElement = mxDragSource.prototype.createDragElement;
 
+		// console.log()
 		// Creates the popup menu
+		// graph.popupMenuHandler.factoryMethod = function(menu, cell, evt, setValid) {
+		// 	createPopupMenu(graph, menu, cell, evt, setValid);
+		// };
 		graph.popupMenuHandler.factoryMethod = function(menu, cell, evt, valid) {
 			createPopupMenu(graph, menu, cell, evt, valid, setValid);
 		};
@@ -97,7 +110,7 @@ const setMXObjs = (graph, objLists, setValid, setValidProj) => {
 	// We can add more shapes...  
 	setObj('rectangle', 120, 80, {
 		// Font
-		'text': 'POP',
+		'text': 'Population',
 		'fontsize': 12,
 		'fontcolor': '#000000',
 
@@ -125,10 +138,14 @@ const setMXObjs = (graph, objLists, setValid, setValidProj) => {
 		'tausynI': '',
 		'Vrest': -65
 	}
-	// ,
-	// valid,
-	// setValid
+	,
+	valid,
+	setValid
 	);
+
+	// return(modal)
+
+	// console.log(val)
 
 }
 export default setMXObjs;
