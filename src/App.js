@@ -93,12 +93,13 @@ function App(props) {
 				  								parentCall={callObjSelect}/> */}
       			{/* <Toolbar id="toolbar" graph={graph} parentCall={callToolbar}/> */}
 				{/* <TopToolbar id="toptoolbar" graph={graph} parentCall={callTopToolbar}/> */}
-				<TopToolbar id="toptoolbar" graph={graph} parentCall={callTopToolbar} parentObjCall={callObjSelect}
+				<TopToolbar id="toptoolbar" graph={graph} 
+							parentCall={callTopToolbar} parentObjCall={callObjSelect}
 							MXValid={MXValidated} setMXValid={setMXValidated} 
-							// celltype={celltype} setCellType={setCellType}
+							celltype={celltype} setCellType={setCellType}
 							/>
       			<MainCanvas id="canvas" setGraph={setGraph} />
-				<ModalForm id="modalFormPop" 	graph={graph} 
+				<ModalForm id="modalForm" 	graph={graph} 
 											MXValid={MXValidated} setMXValid={setMXValidated} 
 											// celltype={celltype} setCellType={setCellType}
 											parentCall={callModalForm} />

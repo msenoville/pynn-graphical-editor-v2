@@ -30,7 +30,8 @@ const TopToolbar = (props) => {
     // Handle parent call
     useEffect(() => {
         if (props.parentCall !== null) {
-            console.log('i am here')
+            // console.log('i am here')
+            console.log('MXvalid etc', props.MXValid)
             if (props.parentCall.toLowerCase() === 'settoptoolbar') {
                 setTopToolbar(props.graph, setBtns);
             }
@@ -57,8 +58,8 @@ const TopToolbar = (props) => {
               >
 
               <ObjSelect id="objectSelector" 	graph={props.graph} 
-				  								MXValid={props.MXValidated} setValid={props.setMXValidated} 
-												// celltype={celltype} setCellType={setCellType}
+				  								MXValid={props.MXValid} setMXValid={props.setMXValid} 
+												  celltype={props.celltype} setCellType={props.setCellType}
 				  								parentCall={props.parentObjCall}/>
             </Box>
 

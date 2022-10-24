@@ -44,32 +44,34 @@ const ModalForm = (props) => {
 
 	// When selected cell changes, update attrs
 	useEffect(() => {
-		if (selected !== null && props.valid == true) {
+		if (selected !== null && props.MXValid == true) {
 			var elt = { ...selected.value };
 			setAttr(elt);
 		}
-	}, [selected, props.valid]);
+	}, [selected, props.MXlid]);
+
+	console.log('inside modalform')
 
 
 	// Render
 	if (selected === null || attr === null || attr.MXtype === undefined || props.type === null || props.type === 'Projection') {
 		return (
-			<div> 
-				id={props.id}
+			<div id={props.id}>
 				{/* <ProjModalForm attr={attr} setAttr={setAttr} 
                         // selected={selected}  setSelected={setSelected}
-                        // valid={props.valid}  setValid={props.setValid}
+                        // valid={props.MXValid}  setValid={props.setValid}
                         graph={props.graph} /> */}
 			</div>
 
 		);
 	} else {
+		{console.log('test')}
 		return (
       <div id={props.id}>
-          {/* <PopModalForm attr={attr} setAttr={setAttr} 
+          <PopModalForm attr={attr} setAttr={setAttr} 
                         selected={selected}  setSelected={setSelected}
-                        valid={props.valid}  setValid={props.setValid}
-                        graph={props.graph} /> */}
+                        valid={props.MXValid}  setValid={props.setMXValid}
+                        graph={props.graph} />
       </div>	  
   );
 }
