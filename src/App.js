@@ -8,6 +8,7 @@ import Toolbar from "./mxGraph/Toolbar";
 import TopToolbar from "./mxGraph/TopToolbar";
 import ModalForm from "./mxGraph/ModalForm";
 // import ProjModalForm from "./mxGraph/ProjModalForm";
+import RightPanel from "./mxGraph/RightPanel";
 import setStylesheet from "./mxGraph/setStylesheet";
 import setAnchors from "./mxGraph/setAnchors";
 import setDefault from "./mxGraph/setDefault";
@@ -18,6 +19,7 @@ import "./css/graph.css";
 import "./css/images.css";
 // import "./css/common.css";
 import "./css/popupmenu.css";
+import "./css/hamburger_menu.css";
 
 // import Popup from 'reactjs-popup';
 // import 'reactjs-popup/dist/index.css';
@@ -35,6 +37,7 @@ function App(props) {
 	const [callToolbar, setCallToolbar] = useState(null);
 	const [callTopToolbar, setCallTopToolbar] = useState(null);
 	const [callModalForm, setCallModalForm] = useState(null);
+	const [callRightPanel, setCallRightPanel] = useState(null);
 
 	const [callProjModalForm, setCallProjModalForm] = useState(null);
 	const [MXValidated, setMXValidated] = useState(false);
@@ -78,6 +81,8 @@ function App(props) {
 			//Settings toolbar
 			setCallTopToolbar("setTopToolbar");
 
+			setCallRightPanel("setRightPanel");
+
 			setCallModalForm("setModalForm");
 			// setCallProjModalForm("setProjModalForm");
 
@@ -98,6 +103,16 @@ function App(props) {
 							MXValid={MXValidated} setMXValid={setMXValidated} 
 							celltype={celltype} setCellType={setCellType}
 							/>
+				<div id="menuToggle">
+					<input id="attrTriger" type="checkbox" />
+					<span></span>
+					<span></span>
+					<span></span>
+
+					<ul id="menu">
+						<RightPanel id="RightPanel" graph={graph} parentCall={callRightPanel} />
+					</ul>
+				</div>
       			<MainCanvas id="canvas" setGraph={setGraph} />
 				<ModalForm id="modalForm" 	graph={graph} 
 											MXValid={MXValidated} setMXValid={setMXValidated} 
